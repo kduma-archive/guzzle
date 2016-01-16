@@ -1,11 +1,11 @@
 <?php
-namespace GuzzleHttp\Tests\Message;
+namespace GuzzleHttp5\Tests\Message;
 
-use GuzzleHttp\Message\FutureResponse;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Stream\Stream;
+use GuzzleHttp5\Message\FutureResponse;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Stream\Stream;
 use React\Promise\Deferred;
-use GuzzleHttp\Tests\Subscriber\MockTest;
+use GuzzleHttp5\Tests\Subscriber\MockTest;
 
 class FutureResponseTest extends \PHPUnit_Framework_TestCase
 {
@@ -118,7 +118,7 @@ class FutureResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Ring\Exception\CancelledFutureAccessException
+     * @expectedException \GuzzleHttp5\Ring\Exception\CancelledFutureAccessException
      */
     public function testAccessingCancelledResponseThrows()
     {

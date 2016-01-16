@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
 /**
  * Represents an HTTP response message.

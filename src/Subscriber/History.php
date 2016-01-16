@@ -1,12 +1,12 @@
 <?php
-namespace GuzzleHttp\Subscriber;
+namespace GuzzleHttp5\Subscriber;
 
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Event\ErrorEvent;
-use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Event\SubscriberInterface;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Event\ErrorEvent;
+use GuzzleHttp5\Event\RequestEvents;
+use GuzzleHttp5\Event\SubscriberInterface;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Message\ResponseInterface;
 
 /**
  * Maintains a list of requests and responses sent using a request or client

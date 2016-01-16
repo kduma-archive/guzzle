@@ -1,20 +1,20 @@
 <?php
-namespace GuzzleHttp\Tests\Subscriber;
+namespace GuzzleHttp5\Tests\Subscriber;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Subscriber\Mock;
-use GuzzleHttp\Message\FutureResponse;
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Stream\Stream;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Subscriber\Mock;
+use GuzzleHttp5\Message\FutureResponse;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Message\MessageFactory;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Stream\Stream;
 use React\Promise\Deferred;
 
 /**
- * @covers GuzzleHttp\Subscriber\Mock
+ * @covers GuzzleHttp5\Subscriber\Mock
  */
 class MockTest extends \PHPUnit_Framework_TestCase
 {

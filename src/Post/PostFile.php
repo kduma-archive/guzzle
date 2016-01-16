@@ -1,9 +1,9 @@
 <?php
-namespace GuzzleHttp\Post;
+namespace GuzzleHttp5\Post;
 
-use GuzzleHttp\Mimetypes;
-use GuzzleHttp\Stream\StreamInterface;
-use GuzzleHttp\Stream\Stream;
+use GuzzleHttp5\Mimetypes;
+use GuzzleHttp5\Stream\StreamInterface;
+use GuzzleHttp5\Stream\Stream;
 
 /**
  * Post file upload

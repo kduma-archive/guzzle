@@ -1,9 +1,9 @@
 <?php
 
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Query;
-use GuzzleHttp\QueryParser;
+use GuzzleHttp5\Query;
+use GuzzleHttp5\QueryParser;
 
 class QueryParserTest extends \PHPUnit_Framework_TestCase
 {

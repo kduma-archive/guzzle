@@ -1,10 +1,10 @@
 <?php
-namespace GuzzleHttp\Tests\Event;
+namespace GuzzleHttp5\Tests\Event;
 
-use GuzzleHttp\Event\RequestEvents;
+use GuzzleHttp5\Event\RequestEvents;
 
 /**
- * @covers GuzzleHttp\Event\RequestEvents
+ * @covers GuzzleHttp5\Event\RequestEvents
  */
 class RequestEventsTest extends \PHPUnit_Framework_TestCase
 {

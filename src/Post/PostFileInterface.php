@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Post;
+namespace GuzzleHttp5\Post;
 
-use GuzzleHttp\Stream\StreamInterface;
+use GuzzleHttp5\Stream\StreamInterface;
 
 /**
  * Post file upload interface

@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Event;
+namespace GuzzleHttp5\Event;
 
-use GuzzleHttp\Message\ResponseInterface;
+use GuzzleHttp5\Message\ResponseInterface;
 
 /**
  * Event object emitted before a request is sent.

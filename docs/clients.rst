@@ -22,7 +22,7 @@ base_url
     .. code-block:: php
 
         // Create a client with a base URL
-        $client = new GuzzleHttp\Client(['base_url' => 'https://github.com']);
+        $client = new GuzzleHttp5\Client(['base_url' => 'https://github.com']);
         // Send a request to https://github.com/notifications
         $response = $client->get('/notifications');
 
@@ -49,7 +49,7 @@ handler
 
 message_factory
     Specifies the factory used to create HTTP requests and responses
-    (``GuzzleHttp\Message\MessageFactoryInterface``).
+    (``GuzzleHttp5\Message\MessageFactoryInterface``).
 
 defaults
     Associative array of :ref:`request-options` that are applied to every
@@ -58,7 +58,7 @@ defaults
     configurations, and any other supported request options.
 
 emitter
-    Specifies an event emitter (``GuzzleHttp\Event\EmitterInterface``) instance
+    Specifies an event emitter (``GuzzleHttp5\Event\EmitterInterface``) instance
     to be used by the client to emit request events. This option is useful if
     you need to inject an emitter with listeners/subscribers already attached.
 
@@ -66,7 +66,7 @@ Here's an example of creating a client with various options.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
+    use GuzzleHttp5\Client;
 
     $client = new Client([
         'base_url' => ['https://api.twitter.com/{version}/', ['version' => 'v1.1']],
@@ -84,12 +84,12 @@ Sending Requests
 Requests can be created using various methods of a client. You can create
 **and** send requests using one of the following methods:
 
-- ``GuzzleHttp\Client::get``: Sends a GET request.
-- ``GuzzleHttp\Client::head``: Sends a HEAD request
-- ``GuzzleHttp\Client::post``: Sends a POST request
-- ``GuzzleHttp\Client::put``: Sends a PUT request
-- ``GuzzleHttp\Client::delete``: Sends a DELETE request
-- ``GuzzleHttp\Client::options``: Sends an OPTIONS request
+- ``GuzzleHttp5\Client::get``: Sends a GET request.
+- ``GuzzleHttp5\Client::head``: Sends a HEAD request
+- ``GuzzleHttp5\Client::post``: Sends a POST request
+- ``GuzzleHttp5\Client::put``: Sends a PUT request
+- ``GuzzleHttp5\Client::delete``: Sends a DELETE request
+- ``GuzzleHttp5\Client::options``: Sends an OPTIONS request
 
 Each of the above methods accepts a URL as the first argument and an optional
 associative array of :ref:`request-options` as the second argument.
@@ -99,12 +99,12 @@ Synchronous Requests
 
 Guzzle sends synchronous (blocking) requests when the ``future`` request option
 is not specified. This means that the request will complete immediately, and if
-an error is encountered, a ``GuzzleHttp\Exception\RequestException`` will be
+an error is encountered, a ``GuzzleHttp5\Exception\RequestException`` will be
 thrown.
 
 .. code-block:: php
 
-    $client = new GuzzleHttp\Client();
+    $client = new GuzzleHttp5\Client();
 
     $client->put('http://httpbin.org', [
         'headers'         => ['X-Foo' => 'Bar'],
@@ -118,12 +118,12 @@ Synchronous Error Handling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When a recoverable error is encountered while calling the ``send()`` method of
-a client, a ``GuzzleHttp\Exception\RequestException`` is thrown.
+a client, a ``GuzzleHttp5\Exception\RequestException`` is thrown.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Exception\RequestException;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Exception\RequestException;
 
     $client = new Client();
 
@@ -136,15 +136,15 @@ a client, a ``GuzzleHttp\Exception\RequestException`` is thrown.
         }
     }
 
-``GuzzleHttp\Exception\RequestException`` always contains a
-``GuzzleHttp\Message\RequestInterface`` object that can be accessed using the
+``GuzzleHttp5\Exception\RequestException`` always contains a
+``GuzzleHttp5\Message\RequestInterface`` object that can be accessed using the
 exception's ``getRequest()`` method.
 
 A response might be present in the exception. In the event of a networking
 error, no response will be received. You can check if a ``RequestException``
 has a response using the ``hasResponse()`` method. If the exception has a
 response, then you can access the associated
-``GuzzleHttp\Message\ResponseInterface`` using the ``getResponse()`` method of
+``GuzzleHttp5\Message\ResponseInterface`` using the ``getResponse()`` method of
 the exception.
 
 Asynchronous Requests
@@ -152,7 +152,7 @@ Asynchronous Requests
 
 You can send asynchronous requests by setting the ``future`` request option
 to ``true`` (or a string that your handler understands). This creates a
-``GuzzleHttp\Message\FutureResponse`` object that has not yet completed. Once
+``GuzzleHttp5\Message\FutureResponse`` object that has not yet completed. Once
 you have a future response, you can use a promise object obtained by calling
 the ``then`` method of the response to take an action when the response has
 completed or encounters an error.
@@ -239,9 +239,9 @@ HTTP Errors
 
 If the ``exceptions`` request option is not set to ``false``, then exceptions
 are thrown for HTTP protocol errors as well:
-``GuzzleHttp\Exception\ClientErrorResponseException`` for 4xx level HTTP
-responses and ``GuzzleHttp\Exception\ServerException`` for 5xx level responses,
-both of which extend from ``GuzzleHttp\Exception\BadResponseException``.
+``GuzzleHttp5\Exception\ClientErrorResponseException`` for 4xx level HTTP
+responses and ``GuzzleHttp5\Exception\ServerException`` for 5xx level responses,
+both of which extend from ``GuzzleHttp5\Exception\BadResponseException``.
 
 Creating Requests
 -----------------
@@ -268,16 +268,16 @@ Sending Requests With a Pool
 ============================
 
 You can send requests concurrently using a fixed size pool via the
-``GuzzleHttp\Pool`` class. The Pool class is an implementation of
-``GuzzleHttp\Ring\Future\FutureInterface``, meaning it can be dereferenced at a
+``GuzzleHttp5\Pool`` class. The Pool class is an implementation of
+``GuzzleHttp5\Ring\Future\FutureInterface``, meaning it can be dereferenced at a
 later time or cancelled before sending. The Pool constructor accepts a client
-object, iterator or array that yields ``GuzzleHttp\Message\RequestInterface``
+object, iterator or array that yields ``GuzzleHttp5\Message\RequestInterface``
 objects, and an optional associative array of options that can be used to
 affect the transfer.
 
 .. code-block:: php
 
-    use GuzzleHttp\Pool;
+    use GuzzleHttp5\Pool;
 
     $requests = [
         $client->createRequest('GET', 'http://httpbin.org'),
@@ -315,8 +315,8 @@ it is first triggered.
 
 .. code-block:: php
 
-    use GuzzleHttp\Pool;
-    use GuzzleHttp\Event\CompleteEvent;
+    use GuzzleHttp5\Pool;
+    use GuzzleHttp5\Event\CompleteEvent;
 
     // Add a single event listener using a callable.
     Pool::send($client, $requests, [
@@ -348,8 +348,8 @@ request using event callbacks.
 
 .. code-block:: php
 
-    use GuzzleHttp\Pool;
-    use GuzzleHttp\Event\ErrorEvent;
+    use GuzzleHttp5\Pool;
+    use GuzzleHttp5\Event\ErrorEvent;
 
     Pool::send($client, $requests, [
         'complete' => function (CompleteEvent $event) {
@@ -364,11 +364,11 @@ request using event callbacks.
         }
     ]);
 
-The ``GuzzleHttp\Event\ErrorEvent`` event object is emitted when an error
+The ``GuzzleHttp5\Event\ErrorEvent`` event object is emitted when an error
 occurs during a transfer. With this event, you have access to the request that
 was sent, the response that was received (if one was received), access to
 transfer statistics, and the ability to intercept the exception with a
-different ``GuzzleHttp\Message\ResponseInterface`` object. See :doc:`events`
+different ``GuzzleHttp5\Message\ResponseInterface`` object. See :doc:`events`
 for more information.
 
 Handling Errors After Transferring
@@ -380,8 +380,8 @@ failed request to an array that we can use to process errors later.
 
 .. code-block:: php
 
-    use GuzzleHttp\Pool;
-    use GuzzleHttp\Event\ErrorEvent;
+    use GuzzleHttp5\Pool;
+    use GuzzleHttp5\Event\ErrorEvent;
 
     $errors = [];
     Pool::send($client, $requests, [
@@ -401,12 +401,12 @@ Batching Requests
 
 Sometimes you just want to send a few requests concurrently and then process
 the results all at once after they've been sent. Guzzle provides a convenience
-function ``GuzzleHttp\Pool::batch()`` that makes this very simple:
+function ``GuzzleHttp5\Pool::batch()`` that makes this very simple:
 
 .. code-block:: php
 
-    use GuzzleHttp\Pool;
-    use GuzzleHttp\Client;
+    use GuzzleHttp5\Pool;
+    use GuzzleHttp5\Client;
 
     $client = new Client();
 
@@ -416,7 +416,7 @@ function ``GuzzleHttp\Pool::batch()`` that makes this very simple:
         $client->createRequest('PUT', 'http://httpbin.org/put'),
     ];
 
-    // Results is a GuzzleHttp\BatchResults object.
+    // Results is a GuzzleHttp5\BatchResults object.
     $results = Pool::batch($client, $requests);
 
     // Can be accessed by index.
@@ -435,7 +435,7 @@ function ``GuzzleHttp\Pool::batch()`` that makes this very simple:
         echo $requestException->getMessage() . "\n";
     }
 
-``GuzzleHttp\Pool::batch()`` accepts an optional associative array of options
+``GuzzleHttp5\Pool::batch()`` accepts an optional associative array of options
 in the third argument that allows you to specify the 'before', 'complete',
 'error', and 'end' events as well as specify the maximum number of requests to
 send concurrently using the 'pool_size' option key.
@@ -454,7 +454,7 @@ All of the following examples use the following client:
 
 .. code-block:: php
 
-    $client = new GuzzleHttp\Client(['base_url' => 'http://httpbin.org']);
+    $client = new GuzzleHttp5\Client(['base_url' => 'http://httpbin.org']);
 
 headers
 -------
@@ -484,8 +484,8 @@ body
 :Types:
     - string
     - ``fopen()`` resource
-    - ``GuzzleHttp\Stream\StreamInterface``
-    - ``GuzzleHttp\Post\PostBodyInterface``
+    - ``GuzzleHttp5\Stream\StreamInterface``
+    - ``GuzzleHttp5\Post\PostBodyInterface``
 :Default: None
 
 This setting can be set to any of the following types:
@@ -508,7 +508,7 @@ This setting can be set to any of the following types:
 - Array
 
   Use an array to send POST style requests that use a
-  ``GuzzleHttp\Post\PostBodyInterface`` object as the body.
+  ``GuzzleHttp5\Post\PostBodyInterface`` object as the body.
 
   .. code-block:: php
 
@@ -521,12 +521,12 @@ This setting can be set to any of the following types:
           ]
       ]);
 
-- ``GuzzleHttp\Stream\StreamInterface``
+- ``GuzzleHttp5\Stream\StreamInterface``
 
   .. code-block:: php
 
       // You can send requests that use a Guzzle stream object as the body
-      $stream = GuzzleHttp\Stream\Stream::factory('contents...');
+      $stream = GuzzleHttp5\Stream\Stream::factory('contents...');
       $client->post('/post', ['body' => $stream]);
 
 json
@@ -562,7 +562,7 @@ query
 :Summary: Associative array of query string values to add to the request.
 :Types:
     - array
-    - ``GuzzleHttp\Query``
+    - ``GuzzleHttp5\Query``
 :Default: None
 
 .. code-block:: php
@@ -632,8 +632,8 @@ to ensure that they are fired last or near last in the event chain.
 
 .. code-block:: php
 
-    use GuzzleHttp\Event\BeforeEvent;
-    use GuzzleHttp\Event\RequestEvents;
+    use GuzzleHttp5\Event\BeforeEvent;
+    use GuzzleHttp5\Event\RequestEvents;
 
     /**
      * Custom authentication listener that handles the "foo" auth type.
@@ -641,7 +641,7 @@ to ensure that they are fired last or near last in the event chain.
      * Listens to the "before" event of a request and only modifies the request
      * when the "auth" config setting of the request is "foo".
      */
-    class FooAuth implements GuzzleHttp\Event\SubscriberInterface
+    class FooAuth implements GuzzleHttp5\Event\SubscriberInterface
     {
         private $password;
 
@@ -683,7 +683,7 @@ cookies
 :Types:
     - bool
     - array
-    - ``GuzzleHttp\Cookie\CookieJarInterface``
+    - ``GuzzleHttp5\Cookie\CookieJarInterface``
 :Default: None
 
 Set to ``true`` to use a shared cookie session associated with the client.
@@ -701,12 +701,12 @@ new cookie session.
     // Enable cookies and send specific cookies
     $client->get('/get', ['cookies' => ['foo' => 'bar']]);
 
-Set to a ``GuzzleHttp\Cookie\CookieJarInterface`` object to use an existing
+Set to a ``GuzzleHttp5\Cookie\CookieJarInterface`` object to use an existing
 cookie jar.
 
 .. code-block:: php
 
-    $jar = new GuzzleHttp\Cookie\CookieJar();
+    $jar = new GuzzleHttp5\Cookie\CookieJar();
     $client->get('/get', ['cookies' => $jar]);
 
 .. _allow_redirects-option:
@@ -810,7 +810,7 @@ save_to
 :Types:
     - string
     - ``fopen()`` resource
-    - ``GuzzleHttp\Stream\StreamInterface``
+    - ``GuzzleHttp5\Stream\StreamInterface``
 :Default: PHP temp stream
 
 Pass a string to specify the path to a file that will store the contents of the
@@ -827,13 +827,13 @@ Pass a resource returned from ``fopen()`` to write the response to a PHP stream:
     $resource = fopen('/path/to/file', 'w');
     $client->get('/stream/20', ['save_to' => $resource]);
 
-Pass a ``GuzzleHttp\Stream\StreamInterface`` object to stream the response body
+Pass a ``GuzzleHttp5\Stream\StreamInterface`` object to stream the response body
 to an open Guzzle stream:
 
 .. code-block:: php
 
     $resource = fopen('/path/to/file', 'w');
-    $stream = GuzzleHttp\Stream\Stream::factory($resource);
+    $stream = GuzzleHttp5\Stream\Stream::factory($resource);
     $client->get('/stream/20', ['save_to' => $stream]);
 
 .. _events-option:
@@ -851,10 +851,10 @@ events
 
 .. code-block:: php
 
-    use GuzzleHttp\Event\BeforeEvent;
-    use GuzzleHttp\Event\HeadersEvent;
-    use GuzzleHttp\Event\CompleteEvent;
-    use GuzzleHttp\Event\ErrorEvent;
+    use GuzzleHttp5\Event\BeforeEvent;
+    use GuzzleHttp5\Event\HeadersEvent;
+    use GuzzleHttp5\Event\CompleteEvent;
+    use GuzzleHttp5\Event\ErrorEvent;
 
     $client->get('/', [
         'events' => [
@@ -885,15 +885,15 @@ subscribers
 -----------
 
 :Summary: Array of event subscribers to add to the request. Each value in the
-    array must be an instance of ``GuzzleHttp\Event\SubscriberInterface``.
+    array must be an instance of ``GuzzleHttp5\Event\SubscriberInterface``.
 :Types: array
 :Default: None
 
 .. code-block:: php
 
-    use GuzzleHttp\Subscriber\History;
-    use GuzzleHttp\Subscriber\Mock;
-    use GuzzleHttp\Message\Response;
+    use GuzzleHttp5\Subscriber\History;
+    use GuzzleHttp5\Subscriber\Mock;
+    use GuzzleHttp5\Message\Response;
 
     $history = new History();
     $mock = new Mock([new Response(200)]);
@@ -916,7 +916,7 @@ exceptions
 .. code-block:: php
 
     $client->get('/status/500');
-    // Throws a GuzzleHttp\Exception\ServerException
+    // Throws a GuzzleHttp5\Exception\ServerException
 
     $res = $client->get('/status/500', ['exceptions' => false]);
     echo $res->getStatusCode();
@@ -936,7 +936,7 @@ timeout
 
     // Timeout if a server does not return a response in 3.14 seconds.
     $client->get('/delay/5', ['timeout' => 3.14]);
-    // PHP Fatal error:  Uncaught exception 'GuzzleHttp\Exception\RequestException'
+    // PHP Fatal error:  Uncaught exception 'GuzzleHttp5\Exception\RequestException'
 
 .. _connect_timeout-option:
 
@@ -1244,7 +1244,7 @@ future
 ------
 
 :Summary: Specifies whether or not a response SHOULD be an instance of a
-    ``GuzzleHttp\Message\FutureResponse`` object.
+    ``GuzzleHttp5\Message\FutureResponse`` object.
 :Types:
         - bool
         - string
@@ -1274,7 +1274,7 @@ Event Subscribers
 =================
 
 Requests emit lifecycle events when they are transferred. A client object has a
-``GuzzleHttp\Common\EventEmitter`` object that can be used to add event
+``GuzzleHttp5\Common\EventEmitter`` object that can be used to add event
 *listeners* and event *subscribers* to all requests created by the client.
 
 .. important::
@@ -1284,8 +1284,8 @@ Requests emit lifecycle events when they are transferred. A client object has a
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Event\BeforeEvent;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Event\BeforeEvent;
 
     $client = new Client();
 

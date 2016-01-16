@@ -1,8 +1,8 @@
 <?php
 
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Query;
+use GuzzleHttp5\Query;
 
 class QueryTest extends \PHPUnit_Framework_TestCase
 {

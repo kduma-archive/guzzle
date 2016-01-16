@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
 /**
  * Applies headers to a request.
@@ -10,7 +10,7 @@ namespace GuzzleHttp\Message;
  * NOTE: a body that implements this interface will prevent a default
  * content-type from being added to a request during the before event. If you
  * want a default content-type to be added, then it will need to be done
- * manually (e.g., using {@see GuzzleHttp\Mimetypes}).
+ * manually (e.g., using {@see GuzzleHttp5\Mimetypes}).
  */
 interface AppliesHeadersInterface
 {

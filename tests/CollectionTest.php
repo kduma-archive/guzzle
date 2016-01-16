@@ -1,8 +1,8 @@
 <?php
 
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Collection;
+use GuzzleHttp5\Collection;
 
 class CollectionTest extends \PHPUnit_Framework_TestCase
 {
@@ -244,7 +244,7 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
             'b' => 'lol'
         ), array('a'));
 
-        $this->assertInstanceOf('GuzzleHttp\Collection', $c);
+        $this->assertInstanceOf('GuzzleHttp5\Collection', $c);
         $this->assertEquals(array(
             'a' => '123',
             'b' => 'lol',

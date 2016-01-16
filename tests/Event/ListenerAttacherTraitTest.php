@@ -1,9 +1,9 @@
 <?php
-namespace GuzzleHttp\Tests\Event;
+namespace GuzzleHttp5\Tests\Event;
 
-use GuzzleHttp\Event\HasEmitterInterface;
-use GuzzleHttp\Event\HasEmitterTrait;
-use GuzzleHttp\Event\ListenerAttacherTrait;
+use GuzzleHttp5\Event\HasEmitterInterface;
+use GuzzleHttp5\Event\HasEmitterTrait;
+use GuzzleHttp5\Event\ListenerAttacherTrait;
 
 class ObjectWithEvents implements HasEmitterInterface
 {
@@ -76,7 +76,7 @@ class ListenerAttacherTraitTest extends \PHPUnit_Framework_TestCase
         $called = 0;
         $fn = function () use (&$called) { $called++; };
         $o = new ObjectWithEvents(['foo' => ['fn' => $fn, 'once' => true]]);
-        $ev = $this->getMock('GuzzleHttp\Event\EventInterface');
+        $ev = $this->getMock('GuzzleHttp5\Event\EventInterface');
         $o->getEmitter()->emit('foo', $ev);
         $o->getEmitter()->emit('foo', $ev);
         $this->assertEquals(1, $called);

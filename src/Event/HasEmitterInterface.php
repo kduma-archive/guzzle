@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp\Event;
+namespace GuzzleHttp5\Event;
 
 /**
  * Holds an event emitter

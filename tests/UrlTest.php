@@ -1,11 +1,11 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Query;
-use GuzzleHttp\Url;
+use GuzzleHttp5\Query;
+use GuzzleHttp5\Url;
 
 /**
- * @covers GuzzleHttp\Url
+ * @covers GuzzleHttp5\Url
  */
 class UrlTest extends \PHPUnit_Framework_TestCase
 {
@@ -288,7 +288,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('http://www.test.com?foo%23bar/', (string) $url);
         $this->assertInternalType('string', $this->readAttribute($url, 'query'));
         $this->assertEquals('foo%23bar%2F', (string) $url->getQuery());
-        $this->assertInstanceOf('GuzzleHttp\Query', $this->readAttribute($url, 'query'));
+        $this->assertInstanceOf('GuzzleHttp5\Query', $this->readAttribute($url, 'query'));
     }
 
     public function urlProvider()

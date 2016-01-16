@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Utils;
+use GuzzleHttp5\Utils;
 
 class UtilsTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,8 +1,8 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
-use GuzzleHttp\Event\HasEmitterInterface;
-use GuzzleHttp\Query;
+use GuzzleHttp5\Event\HasEmitterInterface;
+use GuzzleHttp5\Query;
 
 /**
  * Generic HTTP request interface
@@ -130,7 +130,7 @@ interface RequestInterface extends MessageInterface, HasEmitterInterface
     /**
      * Get the request's configuration options.
      *
-     * @return \GuzzleHttp\Collection
+     * @return \GuzzleHttp5\Collection
      */
     public function getConfig();
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace GuzzleHttp\Tests\Message;
+namespace GuzzleHttp5\Tests\Message;
 
-use GuzzleHttp\Event\Emitter;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Query;
-use GuzzleHttp\Stream\Stream;
+use GuzzleHttp5\Event\Emitter;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Query;
+use GuzzleHttp5\Stream\Stream;
 
 /**
- * @covers GuzzleHttp\Message\Request
+ * @covers GuzzleHttp5\Message\Request
  */
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
@@ -86,7 +86,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         $r = new Request('GET', 'http://www.foo.com?baz=bar');
         $this->assertEquals('baz=bar', $r->getQuery());
-        $this->assertInstanceOf('GuzzleHttp\Query', $r->getQuery());
+        $this->assertInstanceOf('GuzzleHttp5\Query', $r->getQuery());
         $r->getQuery()->set('hi', 'there');
         $this->assertEquals('/?baz=bar&hi=there', $r->getResource());
     }

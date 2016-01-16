@@ -1,18 +1,18 @@
 <?php
-namespace GuzzleHttp\Tests\Message;
+namespace GuzzleHttp5\Tests\Message;
 
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Tests\Server;
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Stream\NoSeekStream;
-use GuzzleHttp\Stream\Stream;
-use GuzzleHttp\Subscriber\Prepare;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Tests\Server;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Stream\NoSeekStream;
+use GuzzleHttp5\Stream\Stream;
+use GuzzleHttp5\Subscriber\Prepare;
 
 /**
- * @covers GuzzleHttp\Subscriber\Prepare
+ * @covers GuzzleHttp5\Subscriber\Prepare
  */
 class PrepareTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,7 +28,7 @@ class PrepareTest extends \PHPUnit_Framework_TestCase
     {
         $s = new Prepare();
         $t = $this->getTrans();
-        $p = $this->getMockBuilder('GuzzleHttp\Post\PostBody')
+        $p = $this->getMockBuilder('GuzzleHttp5\Post\PostBody')
             ->setMethods(['applyRequestHeaders'])
             ->getMockForAbstractClass();
         $p->expects($this->once())
@@ -157,7 +157,7 @@ class PrepareTest extends \PHPUnit_Framework_TestCase
     public function testSetsTransferEncodingChunkedIfNeeded()
     {
         $r = new Request('PUT', '/');
-        $s = $this->getMockBuilder('GuzzleHttp\Stream\StreamInterface')
+        $s = $this->getMockBuilder('GuzzleHttp5\Stream\StreamInterface')
             ->setMethods(['getSize'])
             ->getMockForAbstractClass();
         $s->expects($this->exactly(2))
@@ -193,11 +193,11 @@ class PrepareTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \GuzzleHttp\Stream\StreamInterface
+     * @return \GuzzleHttp5\Stream\StreamInterface
      */
     private function getMockBody()
     {
-        $s = $this->getMockBuilder('GuzzleHttp\Stream\MetadataStreamInterface')
+        $s = $this->getMockBuilder('GuzzleHttp5\Stream\MetadataStreamInterface')
             ->setMethods(['getMetadata', 'getSize'])
             ->getMockForAbstractClass();
         $s->expects($this->any())

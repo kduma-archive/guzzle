@@ -1,10 +1,10 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Transaction;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Transaction;
 
 class TransactionTest extends \PHPUnit_Framework_TestCase
 {

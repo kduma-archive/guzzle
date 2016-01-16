@@ -15,12 +15,12 @@ Using a handler
 ---------------
 
 You can change the handler used by a client using the ``handler`` option in the
-``GuzzleHttp\Client`` constructor.
+``GuzzleHttp5\Client`` constructor.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Ring\Client\MockHandler;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Ring\Client\MockHandler;
 
     // Create a mock handler that always returns a 200 response.
     $handler = new MockHandler(['status' => 200]);
@@ -29,11 +29,11 @@ You can change the handler used by a client using the ``handler`` option in the
     $client = new Client(['handler' => $handler]);
 
 At its core, handlers are simply PHP callables that accept a request array
-and return a ``GuzzleHttp\Ring\Future\FutureArrayInterface``. This future array
+and return a ``GuzzleHttp5\Ring\Future\FutureArrayInterface``. This future array
 can be used just like a normal PHP array, causing it to block, or you can use
 the promise interface using the ``then()`` method of the future. Guzzle hooks
 up to the RingPHP project using a very simple bridge class
-(``GuzzleHttp\RingBridge``).
+(``GuzzleHttp5\RingBridge``).
 
 Creating a handler
 ------------------

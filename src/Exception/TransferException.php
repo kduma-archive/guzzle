@@ -1,4 +1,4 @@
 <?php
-namespace GuzzleHttp\Exception;
+namespace GuzzleHttp5\Exception;
 
 class TransferException extends \RuntimeException {}

@@ -1,11 +1,11 @@
 <?php
-namespace GuzzleHttp\Post;
+namespace GuzzleHttp5\Post;
 
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Stream\Exception\CannotAttachException;
-use GuzzleHttp\Stream\StreamInterface;
-use GuzzleHttp\Stream\Stream;
-use GuzzleHttp\Query;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Stream\Exception\CannotAttachException;
+use GuzzleHttp5\Stream\StreamInterface;
+use GuzzleHttp5\Stream\Stream;
+use GuzzleHttp5\Query;
 
 /**
  * Holds POST fields and files and creates a streaming body when read methods

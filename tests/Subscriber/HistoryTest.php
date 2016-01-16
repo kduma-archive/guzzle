@@ -1,19 +1,19 @@
 <?php
-namespace GuzzleHttp\Tests\Subscriber;
+namespace GuzzleHttp5\Tests\Subscriber;
 
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Event\ErrorEvent;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Stream\Stream;
-use GuzzleHttp\Subscriber\History;
-use GuzzleHttp\Subscriber\Mock;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Event\ErrorEvent;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Stream\Stream;
+use GuzzleHttp5\Subscriber\History;
+use GuzzleHttp5\Subscriber\Mock;
 
 /**
- * @covers GuzzleHttp\Subscriber\History
+ * @covers GuzzleHttp5\Subscriber\History
  */
 class HistoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -57,8 +57,8 @@ class HistoryTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($request, $h->getLastRequest());
         $this->assertSame($response, $h->getLastResponse());
         foreach ($h as $trans) {
-            $this->assertInstanceOf('GuzzleHttp\Message\RequestInterface', $trans['request']);
-            $this->assertInstanceOf('GuzzleHttp\Message\ResponseInterface', $trans['response']);
+            $this->assertInstanceOf('GuzzleHttp5\Message\RequestInterface', $trans['request']);
+            $this->assertInstanceOf('GuzzleHttp5\Message\ResponseInterface', $trans['response']);
         }
         return $h;
     }

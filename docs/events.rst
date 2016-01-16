@@ -11,12 +11,12 @@ Event Emitters
 ==============
 
 Clients, requests, and any other class that implements the
-``GuzzleHttp\Event\HasEmitterInterface`` interface have a
-``GuzzleHttp\Event\Emitter`` object. You can add event *listeners* and
+``GuzzleHttp5\Event\HasEmitterInterface`` interface have a
+``GuzzleHttp5\Event\Emitter`` object. You can add event *listeners* and
 event *subscribers* to an event *emitter*.
 
 emitter
-    An object that implements ``GuzzleHttp\Event\EmitterInterface``. This
+    An object that implements ``GuzzleHttp5\Event\EmitterInterface``. This
     object emits named events to event listeners. You may register event
     listeners on subscribers on an emitter.
 
@@ -58,13 +58,13 @@ propagation
 Getting an EventEmitter
 -----------------------
 
-You can get the event emitter of ``GuzzleHttp\Event\HasEmitterInterface``
+You can get the event emitter of ``GuzzleHttp5\Event\HasEmitterInterface``
 object using the ``getEmitter()`` method. Here's an example of getting a
 client object's event emitter.
 
 .. code-block:: php
 
-    $client = new GuzzleHttp\Client();
+    $client = new GuzzleHttp5\Client();
     $emitter = $client->getEmitter();
 
 .. note::
@@ -88,20 +88,20 @@ event is triggered, and optionally provide a priority.
 
 .. code-block:: php
 
-    use GuzzleHttp\Event\BeforeEvent;
+    use GuzzleHttp5\Event\BeforeEvent;
 
     $emitter->on('before', function (BeforeEvent $event) {
         echo $event->getRequest();
     });
 
 When a listener is triggered, it is passed an event that implements the
-``GuzzleHttp\Event\EventInterface`` interface, the name of the event, and the
+``GuzzleHttp5\Event\EventInterface`` interface, the name of the event, and the
 event emitter itself. The above example could more verbosely be written as
 follows:
 
 .. code-block:: php
 
-    use GuzzleHttp\Event\BeforeEvent;
+    use GuzzleHttp5\Event\BeforeEvent;
 
     $emitter->on('before', function (BeforeEvent $event, $name) {
         echo $event->getRequest();
@@ -112,7 +112,7 @@ triggered using the ``once()`` method of an event emitter.
 
 .. code-block:: php
 
-    $client = new GuzzleHttp\Client();
+    $client = new GuzzleHttp5\Client();
     $client->getEmitter()->once('before', function () {
         echo 'This will only happen once... per request!';
     });
@@ -130,11 +130,11 @@ state. This technique is used in Guzzle extensively when intercepting error
 events with responses.
 
 You can stop the propagation of an event using the ``stopPropagation()`` method
-of a ``GuzzleHttp\Event\EventInterface`` object:
+of a ``GuzzleHttp5\Event\EventInterface`` object:
 
 .. code-block:: php
 
-    use GuzzleHttp\Event\ErrorEvent;
+    use GuzzleHttp5\Event\ErrorEvent;
 
     $emitter->on('error', function (ErrorEvent $event) {
         $event->stopPropagation();
@@ -147,7 +147,7 @@ of the event.
 
 .. code-block:: php
 
-    $client = new GuzzleHttp\Client();
+    $client = new GuzzleHttp5\Client();
     $emitter = $client->getEmitter();
     // Note: assume that the $errorEvent was created
     if ($emitter->emit('error', $errorEvent)->isPropagationStopped()) {
@@ -164,7 +164,7 @@ Event Subscribers
 -----------------
 
 Event subscribers are classes that implement the
-``GuzzleHttp\Event\SubscriberInterface`` object. They are used to register
+``GuzzleHttp5\Event\SubscriberInterface`` object. They are used to register
 one or more event listeners to methods of the class. Event subscribers tell
 event emitters exactly which events to listen to and what method to invoke on
 the class when the event is triggered by called the ``getEvents()`` method of
@@ -180,10 +180,10 @@ priority of the listener (as shown in the ``before`` listener in the example).
 
 .. code-block:: php
 
-    use GuzzleHttp\Event\EmitterInterface;
-    use GuzzleHttp\Event\SubscriberInterface;
-    use GuzzleHttp\Event\BeforeEvent;
-    use GuzzleHttp\Event\CompleteEvent;
+    use GuzzleHttp5\Event\EmitterInterface;
+    use GuzzleHttp5\Event\SubscriberInterface;
+    use GuzzleHttp5\Event\BeforeEvent;
+    use GuzzleHttp5\Event\CompleteEvent;
 
     class SimpleSubscriber implements SubscriberInterface
     {
@@ -213,7 +213,7 @@ To register the listeners the subscriber needs to be attached to the emitter:
 
 .. code-block:: php
 
-    $client = new GuzzleHttp\Client();
+    $client = new GuzzleHttp5\Client();
     $emitter = $client->getEmitter();
     $subscriber = new SimpleSubscriber();
     $emitter->attach($subscriber);
@@ -240,7 +240,7 @@ listener that performs the redirect.
 In order to help make the process of determining the correct event priority of
 a listener easier, Guzzle provides several pre-determined named event
 priorities. These priorities are exposed as constants on the
-``GuzzleHttp\Event\RequestEvents`` object.
+``GuzzleHttp5\Event\RequestEvents`` object.
 
 last
     Use ``"last"`` as an event priority to set the priority to the current
@@ -250,41 +250,41 @@ first
     Use ``"first"`` as an event priority to set the priority to the current
     highest priority plus one.
 
-``GuzzleHttp\Event\RequestEvents::EARLY``
+``GuzzleHttp5\Event\RequestEvents::EARLY``
     Used when you want a listener to be triggered as early as possible in the
     event chain.
 
-``GuzzleHttp\Event\RequestEvents::LATE``
+``GuzzleHttp5\Event\RequestEvents::LATE``
     Used when you want a listener to be to be triggered as late as possible in
     the event chain.
 
-``GuzzleHttp\Event\RequestEvents::PREPARE_REQUEST``
+``GuzzleHttp5\Event\RequestEvents::PREPARE_REQUEST``
     Used when you want a listener to be trigger while a request is being
     prepared during the ``before`` event. This event priority is used by the
-    ``GuzzleHttp\Subscriber\Prepare`` event subscriber which is responsible for
+    ``GuzzleHttp5\Subscriber\Prepare`` event subscriber which is responsible for
     guessing a Content-Type, Content-Length, and Expect header of a request.
     You should subscribe after this event is triggered if you want to ensure
     that this subscriber has already been triggered.
 
-``GuzzleHttp\Event\RequestEvents::SIGN_REQUEST``
+``GuzzleHttp5\Event\RequestEvents::SIGN_REQUEST``
     Used when you want a listener to be triggered when a request is about to be
     signed. Any listener triggered at this point should expect that the request
     object will no longer be mutated. If you are implementing a custom
     signature subscriber, then you should use this event priority to sign
     requests.
 
-``GuzzleHttp\Event\RequestEvents::VERIFY_RESPONSE``
+``GuzzleHttp5\Event\RequestEvents::VERIFY_RESPONSE``
     Used when you want a listener to be triggered when a response is being
     validated during the ``complete`` event. The
-    ``GuzzleHttp\Subscriber\HttpError`` event subscriber uses this event
+    ``GuzzleHttp5\Subscriber\HttpError`` event subscriber uses this event
     priority to check if an exception should be thrown due to a 4xx or 5xx
     level response status code. If you are doing any kind of verification of a
     response during the complete event, it should happen at this priority.
 
-``GuzzleHttp\Event\RequestEvents::REDIRECT_RESPONSE``
+``GuzzleHttp5\Event\RequestEvents::REDIRECT_RESPONSE``
     Used when you want a listener to be triggered when a response is being
     redirected during the ``complete`` event. The
-    ``GuzzleHttp\Subscriber\Redirect`` event subscriber uses this event
+    ``GuzzleHttp5\Subscriber\Redirect`` event subscriber uses this event
     priority when performing redirects.
 
 You can use the above event priorities as a guideline for determining the
@@ -318,13 +318,13 @@ before
 ------
 
 The ``before`` event is emitted before a request is sent. The event emitted is
-a ``GuzzleHttp\Event\BeforeEvent``.
+a ``GuzzleHttp5\Event\BeforeEvent``.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Event\EmitterInterface;
-    use GuzzleHttp\Event\BeforeEvent;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Event\EmitterInterface;
+    use GuzzleHttp5\Event\BeforeEvent;
 
     $client = new Client(['base_url' => 'http://httpbin.org']);
     $request = $client->createRequest('GET', '/');
@@ -336,21 +336,21 @@ a ``GuzzleHttp\Event\BeforeEvent``.
             echo $e->getRequest()->getMethod() . "\n";
             // "GET" / "POST" / "PUT" / etc.
             echo get_class($e->getClient());
-            // "GuzzleHttp\Client"
+            // "GuzzleHttp5\Client"
         }
     );
 
 You can intercept a request with a response before the request is sent over the
 wire. The ``intercept()`` method of the ``BeforeEvent`` accepts a
-``GuzzleHttp\Message\ResponseInterface``. Intercepting the event will prevent
+``GuzzleHttp5\Message\ResponseInterface``. Intercepting the event will prevent
 the request from being sent over the wire and stops the propagation of the
 ``before`` event, preventing subsequent event listeners from being invoked.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Event\BeforeEvent;
-    use GuzzleHttp\Message\Response;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Event\BeforeEvent;
+    use GuzzleHttp5\Message\Response;
 
     $client = new Client(['base_url' => 'http://httpbin.org']);
     $request = $client->createRequest('GET', '/status/500');
@@ -374,7 +374,7 @@ complete
 --------
 
 The ``complete`` event is emitted after a transaction completes and an entire
-response has been received. The event is a ``GuzzleHttp\Event\CompleteEvent``.
+response has been received. The event is a ``GuzzleHttp5\Event\CompleteEvent``.
 
 You can intercept the ``complete`` event with a different response if needed
 using the ``intercept()`` method of the event. This can be useful, for example,
@@ -382,9 +382,9 @@ for changing the response for caching.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Event\CompleteEvent;
-    use GuzzleHttp\Message\Response;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Event\CompleteEvent;
+    use GuzzleHttp5\Message\Response;
 
     $client = new Client(['base_url' => 'http://httpbin.org']);
     $request = $client->createRequest('GET', '/status/302');
@@ -406,7 +406,7 @@ for changing the response for caching.
 
 .. attention::
 
-    Any ``GuzzleHttp\Exception\RequestException`` encountered while executing
+    Any ``GuzzleHttp5\Exception\RequestException`` encountered while executing
     the ``complete`` event will trigger the ``error`` event of a request.
 
 .. _error_event:
@@ -416,7 +416,7 @@ error
 
 The ``error`` event is emitted when a request fails (whether it's from a
 networking error or an HTTP protocol error). The event emitted is a
-``GuzzleHttp\Event\ErrorEvent``.
+``GuzzleHttp5\Event\ErrorEvent``.
 
 This event is useful for retrying failed requests. Here's an example of
 retrying failed basic auth requests by re-sending the original request with
@@ -424,8 +424,8 @@ a username and password.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Event\ErrorEvent;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Event\ErrorEvent;
 
     $client = new Client(['base_url' => 'http://httpbin.org']);
     $request = $client->createRequest('GET', '/basic-auth/foo/bar');
@@ -452,7 +452,7 @@ progress
 --------
 
 The ``progress`` event is emitted when data is uploaded or downloaded. The
-event emitted is a ``GuzzleHttp\Event\ProgressEvent``.
+event emitted is a ``GuzzleHttp5\Event\ProgressEvent``.
 
 You can access the emitted progress values using the corresponding public
 properties of the event object:
@@ -466,8 +466,8 @@ This event cannot be intercepted.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Event\ProgressEvent;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Event\ProgressEvent;
 
     $client = new Client(['base_url' => 'http://httpbin.org']);
     $request = $client->createRequest('PUT', '/put', [
@@ -489,15 +489,15 @@ end
 
 The ``end`` event is a terminal event, emitted once per request, that provides
 access to the response that was received or the exception that was encountered.
-The event emitted is a ``GuzzleHttp\Event\EndEvent``.
+The event emitted is a ``GuzzleHttp5\Event\EndEvent``.
 
 This event can be intercepted, but keep in mind that the ``complete`` event
 will not fire after intercepting this event.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Event\EndEvent;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Event\EndEvent;
 
     $client = new Client(['base_url' => 'http://httpbin.org']);
     $request = $client->createRequest('PUT', '/put', [

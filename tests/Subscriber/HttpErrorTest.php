@@ -1,16 +1,16 @@
 <?php
-namespace GuzzleHttp\Tests\Message;
+namespace GuzzleHttp5\Tests\Message;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Subscriber\HttpError;
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Subscriber\Mock;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Subscriber\HttpError;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Subscriber\Mock;
 
 /**
- * @covers GuzzleHttp\Subscriber\HttpError
+ * @covers GuzzleHttp5\Subscriber\HttpError
  */
 class HttpErrorTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,7 +22,7 @@ class HttpErrorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\ClientException
+     * @expectedException \GuzzleHttp5\Exception\ClientException
      */
     public function testThrowsClientExceptionOnFailure()
     {
@@ -32,7 +32,7 @@ class HttpErrorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\ServerException
+     * @expectedException \GuzzleHttp5\Exception\ServerException
      */
     public function testThrowsServerExceptionOnFailure()
     {
@@ -47,7 +47,7 @@ class HttpErrorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\ClientException
+     * @expectedException \GuzzleHttp5\Exception\ClientException
      */
     public function testFullTransaction()
     {

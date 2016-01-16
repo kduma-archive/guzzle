@@ -1,13 +1,13 @@
 <?php
-namespace GuzzleHttp\Subscriber;
+namespace GuzzleHttp5\Subscriber;
 
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Event\SubscriberInterface;
-use GuzzleHttp\Message\AppliesHeadersInterface;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Mimetypes;
-use GuzzleHttp\Stream\StreamInterface;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Event\RequestEvents;
+use GuzzleHttp5\Event\SubscriberInterface;
+use GuzzleHttp5\Message\AppliesHeadersInterface;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Mimetypes;
+use GuzzleHttp5\Stream\StreamInterface;
 
 /**
  * Prepares requests with a body before sending

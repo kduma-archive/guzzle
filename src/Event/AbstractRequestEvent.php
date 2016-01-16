@@ -1,9 +1,9 @@
 <?php
-namespace GuzzleHttp\Event;
+namespace GuzzleHttp5\Event;
 
-use GuzzleHttp\Transaction;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Message\RequestInterface;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\ClientInterface;
+use GuzzleHttp5\Message\RequestInterface;
 
 /**
  * Base class for request events, providing a request and client getter.

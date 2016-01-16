@@ -1,9 +1,9 @@
 <?php
-namespace GuzzleHttp\Tests\Event;
+namespace GuzzleHttp5\Tests\Event;
 
-use GuzzleHttp\Event\Emitter;
-use GuzzleHttp\Event\EventInterface;
-use GuzzleHttp\Event\SubscriberInterface;
+use GuzzleHttp5\Event\Emitter;
+use GuzzleHttp5\Event\EventInterface;
+use GuzzleHttp5\Event\SubscriberInterface;
 
 /**
  * @link https://github.com/symfony/symfony/blob/master/src/Symfony/Component/EventDispatcher/Tests/EventDispatcherTest.php Based on this test.
@@ -101,7 +101,7 @@ class EmitterTest extends \PHPUnit_Framework_TestCase
         $this->emitter->emit(self::preFoo, $this->getEvent());
         $this->assertTrue($this->listener->preFooInvoked);
         $this->assertFalse($this->listener->postFooInvoked);
-        $this->assertInstanceOf('GuzzleHttp\Event\EventInterface', $this->emitter->emit(self::preFoo, $this->getEvent()));
+        $this->assertInstanceOf('GuzzleHttp5\Event\EventInterface', $this->emitter->emit(self::preFoo, $this->getEvent()));
         $event = $this->getEvent();
         $return = $this->emitter->emit(self::preFoo, $event);
         $this->assertSame($event, $return);
@@ -189,7 +189,7 @@ class EmitterTest extends \PHPUnit_Framework_TestCase
         $listeners = $this->emitter->listeners('pre.foo');
         $this->assertNotEmpty($this->emitter->listeners(self::preFoo));
         $this->assertCount(2, $listeners);
-        $this->assertInstanceOf('GuzzleHttp\Tests\Event\TestEventSubscriberWithPriorities', $listeners[0][0]);
+        $this->assertInstanceOf('GuzzleHttp5\Tests\Event\TestEventSubscriberWithPriorities', $listeners[0][0]);
     }
 
     public function testdetach()
@@ -268,11 +268,11 @@ class EmitterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \GuzzleHttp\Event\EventInterface
+     * @return \GuzzleHttp5\Event\EventInterface
      */
     private function getEvent()
     {
-        return $this->getMockBuilder('GuzzleHttp\Event\AbstractEvent')
+        return $this->getMockBuilder('GuzzleHttp5\Event\AbstractEvent')
             ->getMockForAbstractClass();
     }
 }

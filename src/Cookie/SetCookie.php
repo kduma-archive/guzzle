@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Cookie;
+namespace GuzzleHttp5\Cookie;
 
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp5\ToArrayInterface;
 
 /**
  * Set-Cookie object

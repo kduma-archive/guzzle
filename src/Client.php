@@ -1,14 +1,14 @@
 <?php
 namespace GuzzleHttp;
 
-use GuzzleHttp\Event\HasEmitterTrait;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\Message\MessageFactoryInterface;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\FutureResponse;
-use GuzzleHttp\Ring\Core;
-use GuzzleHttp\Ring\Future\FutureInterface;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp5\Event\HasEmitterTrait;
+use GuzzleHttp5\Message\MessageFactory;
+use GuzzleHttp5\Message\MessageFactoryInterface;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Message\FutureResponse;
+use GuzzleHttp5\Ring\Core;
+use GuzzleHttp5\Ring\Future\FutureInterface;
+use GuzzleHttp5\Exception\RequestException;
 use React\Promise\FulfilledPromise;
 use React\Promise\RejectedPromise;
 
@@ -326,8 +326,8 @@ class Client implements ClientInterface
     }
 
     /**
-     * @deprecated Use {@see GuzzleHttp\Pool} instead.
-     * @see GuzzleHttp\Pool
+     * @deprecated Use {@see GuzzleHttp5\Pool} instead.
+     * @see GuzzleHttp5\Pool
      */
     public function sendAll($requests, array $options = [])
     {
@@ -335,7 +335,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * @deprecated Use GuzzleHttp\Utils::getDefaultHandler
+     * @deprecated Use GuzzleHttp5\Utils::getDefaultHandler
      */
     public static function getDefaultHandler()
     {
@@ -343,7 +343,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * @deprecated Use GuzzleHttp\Utils::getDefaultUserAgent
+     * @deprecated Use GuzzleHttp5\Utils::getDefaultUserAgent
      */
     public static function getDefaultUserAgent()
     {

@@ -1,10 +1,10 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\BatchResults;
+use GuzzleHttp5\BatchResults;
 
 /**
- * @covers \GuzzleHttp\BatchResults
+ * @covers \GuzzleHttp5\BatchResults
  */
 class BatchResultsTest extends \PHPUnit_Framework_TestCase
 {

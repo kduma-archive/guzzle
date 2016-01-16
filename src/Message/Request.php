@@ -1,10 +1,10 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
-use GuzzleHttp\Collection;
-use GuzzleHttp\Event\HasEmitterTrait;
-use GuzzleHttp\Subscriber\Prepare;
-use GuzzleHttp\Url;
+use GuzzleHttp5\Collection;
+use GuzzleHttp5\Event\HasEmitterTrait;
+use GuzzleHttp5\Subscriber\Prepare;
+use GuzzleHttp5\Url;
 
 /**
  * HTTP request class to send requests

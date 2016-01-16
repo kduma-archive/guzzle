@@ -1,19 +1,19 @@
 <?php
-namespace GuzzleHttp\Tests\Post;
+namespace GuzzleHttp5\Tests\Post;
 
-use GuzzleHttp\Post\MultipartBody;
-use GuzzleHttp\Post\PostFile;
-use GuzzleHttp\Stream\Stream;
+use GuzzleHttp5\Post\MultipartBody;
+use GuzzleHttp5\Post\PostFile;
+use GuzzleHttp5\Stream\Stream;
 
 /**
- * @covers GuzzleHttp\Post\PostFile
+ * @covers GuzzleHttp5\Post\PostFile
  */
 class PostFileTest extends \PHPUnit_Framework_TestCase
 {
     public function testCreatesFromString()
     {
         $p = new PostFile('foo', 'hi', '/path/to/test.php');
-        $this->assertInstanceOf('GuzzleHttp\Post\PostFileInterface', $p);
+        $this->assertInstanceOf('GuzzleHttp5\Post\PostFileInterface', $p);
         $this->assertEquals('hi', $p->getContent());
         $this->assertEquals('foo', $p->getName());
         $this->assertEquals('/path/to/test.php', $p->getFilename());

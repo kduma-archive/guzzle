@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp\Event;
+namespace GuzzleHttp5\Event;
 
 /**
  * Event object emitted after a request has been completed.

@@ -1,23 +1,23 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Event\ErrorEvent;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Query;
-use GuzzleHttp\Ring\Client\MockHandler;
-use GuzzleHttp\Ring\Future\FutureArray;
-use GuzzleHttp\Subscriber\History;
-use GuzzleHttp\Subscriber\Mock;
-use GuzzleHttp\Url;
-use GuzzleHttp\Utils;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Event\ErrorEvent;
+use GuzzleHttp5\Message\MessageFactory;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Query;
+use GuzzleHttp5\Ring\Client\MockHandler;
+use GuzzleHttp5\Ring\Future\FutureArray;
+use GuzzleHttp5\Subscriber\History;
+use GuzzleHttp5\Subscriber\Mock;
+use GuzzleHttp5\Url;
+use GuzzleHttp5\Utils;
 use React\Promise\Deferred;
 
 /**
- * @covers GuzzleHttp\Client
+ * @covers GuzzleHttp5\Client
  */
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -105,7 +105,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testCanSpecifyMessageFactory()
     {
-        $factory = $this->getMockBuilder('GuzzleHttp\Message\MessageFactoryInterface')
+        $factory = $this->getMockBuilder('GuzzleHttp5\Message\MessageFactoryInterface')
             ->setMethods(['createRequest'])
             ->getMockForAbstractClass();
         $factory->expects($this->once())
@@ -117,7 +117,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testCanSpecifyEmitter()
     {
-        $emitter = $this->getMockBuilder('GuzzleHttp\Event\EmitterInterface')
+        $emitter = $this->getMockBuilder('GuzzleHttp5\Event\EmitterInterface')
             ->setMethods(['listeners'])
             ->getMockForAbstractClass();
         $emitter->expects($this->once())
@@ -149,7 +149,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     private function getRequestClient()
     {
-        $client = $this->getMockBuilder('GuzzleHttp\Client')
+        $client = $this->getMockBuilder('GuzzleHttp5\Client')
             ->setMethods(['send'])
             ->getMock();
         $client->expects($this->once())
@@ -200,7 +200,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testClientMergesDefaultOptionsWithRequestOptions()
     {
-        $f = $this->getMockBuilder('GuzzleHttp\Message\MessageFactoryInterface')
+        $f = $this->getMockBuilder('GuzzleHttp5\Message\MessageFactoryInterface')
             ->setMethods(array('createRequest'))
             ->getMockForAbstractClass();
 
@@ -386,8 +386,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\RequestException
-     * @expectedExceptionMessage Argument 1 passed to GuzzleHttp\Message\FutureResponse::proxy() must implement interface GuzzleHttp\Ring\Future\FutureInterface
+     * @expectedException \GuzzleHttp5\Exception\RequestException
+     * @expectedExceptionMessage Argument 1 passed to GuzzleHttp5\Message\FutureResponse::proxy() must implement interface GuzzleHttp5\Ring\Future\FutureInterface
      */
     public function testEnsuresResponseIsPresentAfterSending()
     {
@@ -397,7 +397,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\RequestException
+     * @expectedException \GuzzleHttp5\Exception\RequestException
      * @expectedExceptionMessage Waiting did not resolve future
      */
     public function testEnsuresResponseIsPresentAfterDereferencing()
@@ -430,7 +430,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\RequestException
+     * @expectedException \GuzzleHttp5\Exception\RequestException
      * @expectedExceptionMessage foo
      */
     public function testClientHandlesErrorsDuringBeforeSendAndThrowsIfUnhandled()
@@ -443,7 +443,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\RequestException
+     * @expectedException \GuzzleHttp5\Exception\RequestException
      * @expectedExceptionMessage foo
      */
     public function testClientWrapsExceptions()
@@ -479,7 +479,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             ]
         ]);
         $this->assertEquals(0, $called);
-        $this->assertInstanceOf('GuzzleHttp\Message\FutureResponse', $response);
+        $this->assertInstanceOf('GuzzleHttp5\Message\FutureResponse', $response);
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertTrue($calledFuture);
         $this->assertEquals(1, $called);
@@ -500,7 +500,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $client = new Client(['handler' => $mock]);
         $response = $client->get('http://localhost:123/foo', ['future' => true]);
         $this->assertFalse($called);
-        $this->assertInstanceOf('GuzzleHttp\Message\FutureResponse', $response);
+        $this->assertInstanceOf('GuzzleHttp5\Message\FutureResponse', $response);
         $this->assertEquals(201, $response->getStatusCode());
         $this->assertTrue($called);
     }
@@ -528,7 +528,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedExceptionMessage Noo!
-     * @expectedException \GuzzleHttp\Exception\RequestException
+     * @expectedException \GuzzleHttp5\Exception\RequestException
      */
     public function testThrowsExceptionsSynchronously()
     {
@@ -614,7 +614,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'future' => true
         ]);
         $res = $client->send($request);
-        $this->assertInstanceOf('GuzzleHttp\Message\FutureResponse', $res);
+        $this->assertInstanceOf('GuzzleHttp5\Message\FutureResponse', $res);
         try {
             $res->wait();
             $this->fail('did not throw');
@@ -630,7 +630,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             'future' => true
         ]);
         $res = $client->send($request);
-        $this->assertInstanceOf('GuzzleHttp\Message\FutureResponse', $res);
+        $this->assertInstanceOf('GuzzleHttp5\Message\FutureResponse', $res);
         $this->assertEquals(200, $res->getStatusCode());
     }
 

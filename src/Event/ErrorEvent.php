@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Event;
+namespace GuzzleHttp5\Event;
 
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp5\Exception\RequestException;
 
 /**
  * Event emitted when an error occurs while sending a request.

@@ -1,16 +1,16 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
-use GuzzleHttp\Ring\Future\MagicFutureTrait;
-use GuzzleHttp\Ring\Future\FutureInterface;
-use GuzzleHttp\Stream\StreamInterface;
+use GuzzleHttp5\Ring\Future\MagicFutureTrait;
+use GuzzleHttp5\Ring\Future\FutureInterface;
+use GuzzleHttp5\Stream\StreamInterface;
 
 /**
  * Represents a response that has not been fulfilled.
  *
  * When created, you must provide a function that is used to dereference the
  * future result and return it's value. The function has no arguments and MUST
- * return an instance of a {@see GuzzleHttp\Message\ResponseInterface} object.
+ * return an instance of a {@see GuzzleHttp5\Message\ResponseInterface} object.
  *
  * You can optionally provide a function in the constructor that can be used to
  * cancel the future from completing if possible. This function has no

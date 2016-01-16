@@ -1,4 +1,4 @@
 <?php
-namespace GuzzleHttp\Exception;
+namespace GuzzleHttp5\Exception;
 
 class CouldNotRewindStreamException extends RequestException {}

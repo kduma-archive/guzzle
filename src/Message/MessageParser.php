@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
 /**
  * Request and response parser used by Guzzle

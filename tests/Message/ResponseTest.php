@@ -1,13 +1,13 @@
 <?php
 
-namespace GuzzleHttp\Tests\Message;
+namespace GuzzleHttp5\Tests\Message;
 
-use GuzzleHttp\Exception\XmlParseException;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Stream\Stream;
+use GuzzleHttp5\Exception\XmlParseException;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Stream\Stream;
 
 /**
- * @covers GuzzleHttp\Message\Response
+ * @covers GuzzleHttp5\Message\Response
  */
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {
@@ -62,7 +62,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\ParseException
+     * @expectedException \GuzzleHttp5\Exception\ParseException
      * @expectedExceptionMessage Unable to parse JSON data: JSON_ERROR_SYNTAX - Syntax error, malformed JSON
      */
     public function testThrowsExceptionWhenFailsToParseJsonResponse()
@@ -81,7 +81,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\XmlParseException
+     * @expectedException \GuzzleHttp5\Exception\XmlParseException
      * @expectedExceptionMessage Unable to parse response body into XML: String could not be parsed as XML
      */
     public function testThrowsExceptionWhenFailsToParseXmlResponse()

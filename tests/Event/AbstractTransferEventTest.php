@@ -1,13 +1,13 @@
 <?php
-namespace GuzzleHttp\Tests\Event;
+namespace GuzzleHttp5\Tests\Event;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Message\Request;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Message\Request;
 
 /**
- * @covers GuzzleHttp\Event\AbstractTransferEvent
+ * @covers GuzzleHttp5\Event\AbstractTransferEvent
  */
 class AbstractTransferEventTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,7 +15,7 @@ class AbstractTransferEventTest extends \PHPUnit_Framework_TestCase
     {
         $t = new Transaction(new Client(), new Request('GET', '/'));
         $t->transferInfo = ['foo' => 'bar'];
-        $e = $this->getMockBuilder('GuzzleHttp\Event\AbstractTransferEvent')
+        $e = $this->getMockBuilder('GuzzleHttp5\Event\AbstractTransferEvent')
             ->setConstructorArgs([$t])
             ->getMockForAbstractClass();
         $this->assertNull($e->getTransferInfo('baz'));
@@ -27,7 +27,7 @@ class AbstractTransferEventTest extends \PHPUnit_Framework_TestCase
     {
         $t = new Transaction(new Client(), new Request('GET', '/'));
         $t->response = new Response(200);
-        $e = $this->getMockBuilder('GuzzleHttp\Event\AbstractTransferEvent')
+        $e = $this->getMockBuilder('GuzzleHttp5\Event\AbstractTransferEvent')
             ->setConstructorArgs([$t])
             ->getMockForAbstractClass();
         $this->assertTrue($e->hasResponse());
@@ -38,7 +38,7 @@ class AbstractTransferEventTest extends \PHPUnit_Framework_TestCase
     {
         $t = new Transaction(new Client(), new Request('GET', '/'));
         $r = new Response(200);
-        $e = $this->getMockBuilder('GuzzleHttp\Event\AbstractTransferEvent')
+        $e = $this->getMockBuilder('GuzzleHttp5\Event\AbstractTransferEvent')
             ->setConstructorArgs([$t])
             ->getMockForAbstractClass();
         $e->intercept($r);
@@ -51,7 +51,7 @@ class AbstractTransferEventTest extends \PHPUnit_Framework_TestCase
     {
         $t = new Transaction(new Client(), new Request('GET', '/'));
         $t->retries = 2;
-        $e = $this->getMockBuilder('GuzzleHttp\Event\AbstractTransferEvent')
+        $e = $this->getMockBuilder('GuzzleHttp5\Event\AbstractTransferEvent')
             ->setConstructorArgs([$t])
             ->getMockForAbstractClass();
         $this->assertEquals(2, $e->getRetryCount());

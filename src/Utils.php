@@ -1,10 +1,10 @@
 <?php
 namespace GuzzleHttp;
 
-use GuzzleHttp\Ring\Client\CurlHandler;
-use GuzzleHttp\Ring\Client\CurlMultiHandler;
-use GuzzleHttp\Ring\Client\StreamHandler;
-use GuzzleHttp\Ring\Client\Middleware;
+use GuzzleHttp5\Ring\Client\CurlHandler;
+use GuzzleHttp5\Ring\Client\CurlMultiHandler;
+use GuzzleHttp5\Ring\Client\StreamHandler;
+use GuzzleHttp5\Ring\Client\Middleware;
 
 /**
  * Utility methods used throughout Guzzle.
@@ -21,7 +21,7 @@ final class Utils
      *     // Get the bar key of a set of nested arrays.
      *     // This is equivalent to $collection['foo']['baz']['bar'] but won't
      *     // throw warnings for missing keys.
-     *     GuzzleHttp\get_path($data, 'foo/baz/bar');
+     *     GuzzleHttp5\get_path($data, 'foo/baz/bar');
      *
      * @param array  $data Data to retrieve values from
      * @param string $path Path to traverse and retrieve a value from
@@ -51,10 +51,10 @@ final class Utils
      * A value may be prepended to an existing array by using "[]" as the final
      * key of a path.
      *
-     *     GuzzleHttp\get_path($data, 'foo/baz'); // null
-     *     GuzzleHttp\set_path($data, 'foo/baz/[]', 'a');
-     *     GuzzleHttp\set_path($data, 'foo/baz/[]', 'b');
-     *     GuzzleHttp\get_path($data, 'foo/baz');
+     *     GuzzleHttp5\get_path($data, 'foo/baz'); // null
+     *     GuzzleHttp5\set_path($data, 'foo/baz/[]', 'a');
+     *     GuzzleHttp5\set_path($data, 'foo/baz/[]', 'b');
+     *     GuzzleHttp5\get_path($data, 'foo/baz');
      *     // Returns ['a', 'b']
      *
      * @param array  $data  Data to modify by reference

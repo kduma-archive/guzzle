@@ -1,10 +1,10 @@
 <?php
-namespace GuzzleHttp\Subscriber;
+namespace GuzzleHttp5\Subscriber;
 
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Event\SubscriberInterface;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Event\RequestEvents;
+use GuzzleHttp5\Event\SubscriberInterface;
+use GuzzleHttp5\Exception\RequestException;
 
 /**
  * Throws exceptions when a 4xx or 5xx response is received

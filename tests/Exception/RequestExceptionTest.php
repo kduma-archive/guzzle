@@ -1,13 +1,13 @@
 <?php
-namespace GuzzleHttp\Tests\Event;
+namespace GuzzleHttp5\Tests\Event;
 
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Ring\Exception\ConnectException;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Ring\Exception\ConnectException;
 
 /**
- * @covers GuzzleHttp\Exception\RequestException
+ * @covers GuzzleHttp5\Exception\RequestException
  */
 class RequestExceptionTest extends \PHPUnit_Framework_TestCase
 {
@@ -26,7 +26,7 @@ class RequestExceptionTest extends \PHPUnit_Framework_TestCase
     {
         $e = RequestException::create(new Request('GET', '/'));
         $this->assertEquals('Error completing request', $e->getMessage());
-        $this->assertInstanceOf('GuzzleHttp\Exception\RequestException', $e);
+        $this->assertInstanceOf('GuzzleHttp5\Exception\RequestException', $e);
     }
 
     public function testCreatesClientErrorResponseException()
@@ -36,7 +36,7 @@ class RequestExceptionTest extends \PHPUnit_Framework_TestCase
             'Client error response [url] / [status code] 400 [reason phrase] Bad Request',
             $e->getMessage()
         );
-        $this->assertInstanceOf('GuzzleHttp\Exception\ClientException', $e);
+        $this->assertInstanceOf('GuzzleHttp5\Exception\ClientException', $e);
     }
 
     public function testCreatesServerErrorResponseException()
@@ -46,7 +46,7 @@ class RequestExceptionTest extends \PHPUnit_Framework_TestCase
             'Server error response [url] / [status code] 500 [reason phrase] Internal Server Error',
             $e->getMessage()
         );
-        $this->assertInstanceOf('GuzzleHttp\Exception\ServerException', $e);
+        $this->assertInstanceOf('GuzzleHttp5\Exception\ServerException', $e);
     }
 
     public function testCreatesGenericErrorResponseException()
@@ -56,7 +56,7 @@ class RequestExceptionTest extends \PHPUnit_Framework_TestCase
             'Unsuccessful response [url] / [status code] 600 [reason phrase] ',
             $e->getMessage()
         );
-        $this->assertInstanceOf('GuzzleHttp\Exception\RequestException', $e);
+        $this->assertInstanceOf('GuzzleHttp5\Exception\RequestException', $e);
     }
 
     public function testHasStatusCodeAsExceptionCode() {
@@ -69,7 +69,7 @@ class RequestExceptionTest extends \PHPUnit_Framework_TestCase
         $e = new \Exception('foo');
         $r = new Request('GET', 'http://www.oo.com');
         $ex = RequestException::wrapException($r, $e);
-        $this->assertInstanceOf('GuzzleHttp\Exception\RequestException', $ex);
+        $this->assertInstanceOf('GuzzleHttp5\Exception\RequestException', $ex);
         $this->assertSame($e, $ex->getPrevious());
     }
 
@@ -78,6 +78,6 @@ class RequestExceptionTest extends \PHPUnit_Framework_TestCase
         $e = new ConnectException('foo');
         $r = new Request('GET', 'http://www.oo.com');
         $ex = RequestException::wrapException($r, $e);
-        $this->assertInstanceOf('GuzzleHttp\Exception\ConnectException', $ex);
+        $this->assertInstanceOf('GuzzleHttp5\Exception\ConnectException', $ex);
     }
 }

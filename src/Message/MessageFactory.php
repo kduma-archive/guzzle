@@ -1,18 +1,18 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
-use GuzzleHttp\Cookie\CookieJar;
-use GuzzleHttp\Cookie\CookieJarInterface;
-use GuzzleHttp\Event\ListenerAttacherTrait;
-use GuzzleHttp\Post\PostBody;
-use GuzzleHttp\Post\PostFile;
-use GuzzleHttp\Post\PostFileInterface;
-use GuzzleHttp\Query;
-use GuzzleHttp\Stream\Stream;
-use GuzzleHttp\Subscriber\Cookie;
-use GuzzleHttp\Subscriber\HttpError;
-use GuzzleHttp\Subscriber\Redirect;
-use GuzzleHttp\Url;
+use GuzzleHttp5\Cookie\CookieJar;
+use GuzzleHttp5\Cookie\CookieJarInterface;
+use GuzzleHttp5\Event\ListenerAttacherTrait;
+use GuzzleHttp5\Post\PostBody;
+use GuzzleHttp5\Post\PostFile;
+use GuzzleHttp5\Post\PostFileInterface;
+use GuzzleHttp5\Query;
+use GuzzleHttp5\Stream\Stream;
+use GuzzleHttp5\Subscriber\Cookie;
+use GuzzleHttp5\Subscriber\HttpError;
+use GuzzleHttp5\Subscriber\Redirect;
+use GuzzleHttp5\Url;
 use \InvalidArgumentException as Iae;
 
 /**

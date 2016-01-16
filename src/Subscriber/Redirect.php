@@ -1,15 +1,15 @@
 <?php
-namespace GuzzleHttp\Subscriber;
+namespace GuzzleHttp5\Subscriber;
 
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Event\SubscriberInterface;
-use GuzzleHttp\Exception\BadResponseException;
-use GuzzleHttp\Exception\CouldNotRewindStreamException;
-use GuzzleHttp\Exception\TooManyRedirectsException;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Url;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Event\RequestEvents;
+use GuzzleHttp5\Event\SubscriberInterface;
+use GuzzleHttp5\Exception\BadResponseException;
+use GuzzleHttp5\Exception\CouldNotRewindStreamException;
+use GuzzleHttp5\Exception\TooManyRedirectsException;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Message\ResponseInterface;
+use GuzzleHttp5\Url;
 
 /**
  * Subscriber used to implement HTTP redirects.

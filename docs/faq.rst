@@ -89,7 +89,7 @@ Can Guzzle send asynchronous requests?
 ======================================
 
 Yes. Pass the ``future`` true request option to a request to send it
-asynchronously. Guzzle will then return a ``GuzzleHttp\Message\FutureResponse``
+asynchronously. Guzzle will then return a ``GuzzleHttp5\Message\FutureResponse``
 object that can be used synchronously by accessing the response object like a
 normal response, and it can be used asynchronously using a promise that is
 notified when the response is resolved with a real response or rejected with an
@@ -188,7 +188,7 @@ setting the ``expect`` request option to ``false``:
 
 .. code-block:: php
 
-    $client = new GuzzleHttp\Client();
+    $client = new GuzzleHttp5\Client();
 
     // Disable the expect header on a single request
     $response = $client->put('/', [], 'the body', [

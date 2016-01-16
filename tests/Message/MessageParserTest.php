@@ -1,11 +1,11 @@
 <?php
 
-namespace GuzzleHttp\Tests\Message;
+namespace GuzzleHttp5\Tests\Message;
 
-use GuzzleHttp\Message\MessageParser;
+use GuzzleHttp5\Message\MessageParser;
 
 /**
- * @covers \GuzzleHttp\Message\MessageParser
+ * @covers \GuzzleHttp5\Message\MessageParser
  */
 class MessageParserTest extends \PHPUnit_Framework_TestCase
 {

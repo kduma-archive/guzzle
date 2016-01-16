@@ -1,11 +1,11 @@
 <?php
-namespace GuzzleHttp\Exception;
+namespace GuzzleHttp5\Exception;
 
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Ring\Exception\ConnectException;
-use GuzzleHttp\Exception\ConnectException as HttpConnectException;
-use GuzzleHttp\Ring\Future\FutureInterface;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Message\ResponseInterface;
+use GuzzleHttp5\Ring\Exception\ConnectException;
+use GuzzleHttp5\Exception\ConnectException as HttpConnectException;
+use GuzzleHttp5\Ring\Future\FutureInterface;
 
 /**
  * HTTP Request exception

@@ -1,14 +1,14 @@
 <?php
 namespace GuzzleHttp;
 
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Ring\Core;
-use GuzzleHttp\Ring\Future\FutureInterface;
-use GuzzleHttp\Event\ListenerAttacherTrait;
-use GuzzleHttp\Event\EndEvent;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Event\RequestEvents;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Message\ResponseInterface;
+use GuzzleHttp5\Ring\Core;
+use GuzzleHttp5\Ring\Future\FutureInterface;
+use GuzzleHttp5\Event\ListenerAttacherTrait;
+use GuzzleHttp5\Event\EndEvent;
 use React\Promise\Deferred;
 use React\Promise\FulfilledPromise;
 use React\Promise\PromiseInterface;
@@ -35,7 +35,7 @@ class Pool implements FutureInterface
 {
     use ListenerAttacherTrait;
 
-    /** @var \GuzzleHttp\ClientInterface */
+    /** @var \GuzzleHttp5\ClientInterface */
     private $client;
 
     /** @var \Iterator Yields requests */
@@ -101,7 +101,7 @@ class Pool implements FutureInterface
      * @param ClientInterface $client   Client used to send the requests
      * @param array|\Iterator $requests Requests to send in parallel
      * @param array           $options  Passes through the options available in
-     *                                  {@see GuzzleHttp\Pool::__construct}
+     *                                  {@see GuzzleHttp5\Pool::__construct}
      *
      * @return BatchResults Returns a container for the results.
      * @throws \InvalidArgumentException if the event format is incorrect.
@@ -140,7 +140,7 @@ class Pool implements FutureInterface
      * @param ClientInterface $client   Client used to send the requests
      * @param array|\Iterator $requests Requests to send in parallel
      * @param array           $options  Passes through the options available in
-     *                                  {@see GuzzleHttp\Pool::__construct}
+     *                                  {@see GuzzleHttp5\Pool::__construct}
      */
     public static function send(
         ClientInterface $client,

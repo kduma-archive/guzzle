@@ -11,10 +11,10 @@
 
 require __DIR__ . '/bootstrap.php';
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Tests\Server;
-use GuzzleHttp\Ring\Client\CurlMultiHandler;
-use GuzzleHttp\Pool;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Tests\Server;
+use GuzzleHttp5\Ring\Client\CurlMultiHandler;
+use GuzzleHttp5\Pool;
 
 // Wait until the server is responding
 Server::wait();

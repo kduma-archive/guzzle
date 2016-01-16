@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp\Event;
+namespace GuzzleHttp5\Event;
 
 /**
  * SubscriberInterface provides an array of events to an

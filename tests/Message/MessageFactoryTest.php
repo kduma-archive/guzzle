@@ -1,20 +1,20 @@
 <?php
-namespace GuzzleHttp\Tests\Message;
+namespace GuzzleHttp5\Tests\Message;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Post\PostFile;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\Subscriber\Cookie;
-use GuzzleHttp\Cookie\CookieJar;
-use GuzzleHttp\Query;
-use GuzzleHttp\Stream\Stream;
-use GuzzleHttp\Subscriber\History;
-use GuzzleHttp\Subscriber\Mock;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Post\PostFile;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Message\MessageFactory;
+use GuzzleHttp5\Subscriber\Cookie;
+use GuzzleHttp5\Cookie\CookieJar;
+use GuzzleHttp5\Query;
+use GuzzleHttp5\Stream\Stream;
+use GuzzleHttp5\Subscriber\History;
+use GuzzleHttp5\Subscriber\Mock;
 
 /**
- * @covers GuzzleHttp\Message\MessageFactory
+ * @covers GuzzleHttp5\Message\MessageFactory
  */
 class MessageFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -83,7 +83,7 @@ class MessageFactoryTest extends \PHPUnit_Framework_TestCase
                 'ghi' => $pfi
             ]
         ]);
-        $this->assertInstanceOf('GuzzleHttp\Post\PostBody', $req->getBody());
+        $this->assertInstanceOf('GuzzleHttp5\Post\PostBody', $req->getBody());
         $s = (string) $req;
         $this->assertContains('testCreatesRequestWithPostBodyAndPostFiles', $s);
         $this->assertContains('multipart/form-data', $s);

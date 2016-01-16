@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp\Exception;
+namespace GuzzleHttp5\Exception;
 
 /**
  * Exception when a server error is encountered (5xx codes)

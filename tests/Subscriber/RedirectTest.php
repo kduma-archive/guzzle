@@ -1,12 +1,12 @@
 <?php
-namespace GuzzleHttp\Tests\Plugin\Redirect;
+namespace GuzzleHttp5\Tests\Plugin\Redirect;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Subscriber\History;
-use GuzzleHttp\Subscriber\Mock;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Subscriber\History;
+use GuzzleHttp5\Subscriber\Mock;
 
 /**
- * @covers GuzzleHttp\Subscriber\Redirect
+ * @covers GuzzleHttp5\Subscriber\Redirect
  */
 class RedirectTest extends \PHPUnit_Framework_TestCase
 {
@@ -49,7 +49,7 @@ class RedirectTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\TooManyRedirectsException
+     * @expectedException \GuzzleHttp5\Exception\TooManyRedirectsException
      * @expectedExceptionMessage Will not follow more than
      */
     public function testCanLimitNumberOfRedirects()
@@ -125,7 +125,7 @@ class RedirectTest extends \PHPUnit_Framework_TestCase
         $client->getEmitter()->attach($mock);
         $client->getEmitter()->attach($h);
 
-        $body = $this->getMockBuilder('GuzzleHttp\Stream\StreamInterface')
+        $body = $this->getMockBuilder('GuzzleHttp5\Stream\StreamInterface')
             ->setMethods(['seek', 'read', 'eof', 'tell'])
             ->getMockForAbstractClass();
         $body->expects($this->once())->method('tell')->will($this->returnValue(1));
@@ -139,7 +139,7 @@ class RedirectTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\CouldNotRewindStreamException
+     * @expectedException \GuzzleHttp5\Exception\CouldNotRewindStreamException
      * @expectedExceptionMessage Unable to rewind the non-seekable request body after redirecting
      */
     public function testThrowsExceptionWhenStreamCannotBeRewound()
@@ -153,7 +153,7 @@ class RedirectTest extends \PHPUnit_Framework_TestCase
         $client->getEmitter()->attach($mock);
         $client->getEmitter()->attach($h);
 
-        $body = $this->getMockBuilder('GuzzleHttp\Stream\StreamInterface')
+        $body = $this->getMockBuilder('GuzzleHttp5\Stream\StreamInterface')
             ->setMethods(['seek', 'read', 'eof', 'tell'])
             ->getMockForAbstractClass();
         $body->expects($this->once())->method('tell')->will($this->returnValue(1));
@@ -282,7 +282,7 @@ class RedirectTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\BadResponseException
+     * @expectedException \GuzzleHttp5\Exception\BadResponseException
      * @expectedExceptionMessage Redirect URL, https://foo.com/redirect2, does not use one of the allowed redirect protocols: http
      */
     public function testThrowsWhenRedirectingToInvalidUrlProtocol()

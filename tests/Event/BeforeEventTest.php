@@ -1,14 +1,14 @@
 <?php
-namespace GuzzleHttp\Tests\Event;
+namespace GuzzleHttp5\Tests\Event;
 
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Message\Response;
 
 /**
- * @covers GuzzleHttp\Event\BeforeEvent
+ * @covers GuzzleHttp5\Event\BeforeEvent
  */
 class BeforeEventTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,7 +1,7 @@
 <?php
 namespace GuzzleHttp;
 
-use GuzzleHttp\Ring\Core;
+use GuzzleHttp5\Ring\Core;
 
 /**
  * Parses and generates URLs based on URL parts

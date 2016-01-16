@@ -1,15 +1,15 @@
 <?php
 namespace GuzzleHttp;
 
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Event\ErrorEvent;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Event\EndEvent;
-use GuzzleHttp\Exception\StateException;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\FutureResponse;
-use GuzzleHttp\Message\MessageFactoryInterface;
-use GuzzleHttp\Ring\Future\FutureInterface;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Event\ErrorEvent;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Event\EndEvent;
+use GuzzleHttp5\Exception\StateException;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Message\FutureResponse;
+use GuzzleHttp5\Message\MessageFactoryInterface;
+use GuzzleHttp5\Ring\Future\FutureInterface;
 
 /**
  * Responsible for transitioning requests through lifecycle events.

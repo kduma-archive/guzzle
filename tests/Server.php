@@ -1,12 +1,12 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\RingBridge;
-use GuzzleHttp\Tests\Ring\Client\Server as TestServer;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Message\MessageFactory;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Message\ResponseInterface;
+use GuzzleHttp5\RingBridge;
+use GuzzleHttp5\Tests\Ring\Client\Server as TestServer;
 
 /**
  * Placeholder for the RingPHP-Client server that makes it easier to use.

@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
-use GuzzleHttp\Url;
+use GuzzleHttp5\Url;
 
 /**
  * Request and response factory

@@ -1,10 +1,10 @@
 <?php
-namespace GuzzleHttp\Post;
+namespace GuzzleHttp5\Post;
 
-use GuzzleHttp\Stream\AppendStream;
-use GuzzleHttp\Stream\Stream;
-use GuzzleHttp\Stream\StreamDecoratorTrait;
-use GuzzleHttp\Stream\StreamInterface;
+use GuzzleHttp5\Stream\AppendStream;
+use GuzzleHttp5\Stream\Stream;
+use GuzzleHttp5\Stream\StreamDecoratorTrait;
+use GuzzleHttp5\Stream\StreamInterface;
 
 /**
  * Stream that when read returns bytes for a streaming multipart/form-data body

@@ -23,9 +23,9 @@ remote API.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Subscriber\Mock;
-    use GuzzleHttp\Message\Response;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Subscriber\Mock;
+    use GuzzleHttp5\Message\Response;
 
     $client = new Client();
 
@@ -52,13 +52,13 @@ History Subscriber
 
 When using things like the ``Mock`` subscriber, you often need to know if the
 requests you expected to send were sent exactly as you intended. While the mock
-subscriber responds with mocked responses, the ``GuzzleHttp\Subscriber\History``
+subscriber responds with mocked responses, the ``GuzzleHttp5\Subscriber\History``
 subscriber maintains a history of the requests that were sent by a client.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Subscriber\History;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Subscriber\History;
 
     $client = new Client();
     $history = new History();
@@ -134,7 +134,7 @@ Mock Adapter
 ============
 
 In addition to using the Mock subscriber, you can use the
-``GuzzleHttp\Ring\Client\MockHandler`` as the handler of a client to return the
+``GuzzleHttp5\Ring\Client\MockHandler`` as the handler of a client to return the
 same response over and over or return the result of a callable function.
 
 Test Web Server
@@ -157,7 +157,7 @@ Using the test server
 
     The following functionality is provided to help developers of Guzzle
     develop HTTP handlers. There is no promise of backwards compatibility
-    when it comes to the node.js test server or the ``GuzzleHttp\Tests\Server``
+    when it comes to the node.js test server or the ``GuzzleHttp5\Tests\Server``
     class. If you are using the test server or ``Server`` class outside of
     guzzlehttp/guzzle, then you will need to configure autoloading and
     ensure the web server is started manually.
@@ -179,8 +179,8 @@ returning.
 
 .. code-block:: php
 
-    use GuzzleHttp\Client;
-    use GuzzleHttp\Tests\Server;
+    use GuzzleHttp5\Client;
+    use GuzzleHttp5\Tests\Server;
 
     // Start the server and queue a response
     Server::enqueue("HTTP/1.1 200 OK\r\n\Content-Length: 0r\n\r\n");
@@ -189,11 +189,11 @@ returning.
     echo $client->get('/foo')->getStatusCode();
     // 200
 
-``GuzzleHttp\Tests\Server`` provides a static interface to the test server. You
+``GuzzleHttp5\Tests\Server`` provides a static interface to the test server. You
 can queue an HTTP response or an array of responses by calling
 ``Server::enqueue()``. This method accepts a string representing an HTTP
-response message, a ``GuzzleHttp\Message\ResponseInterface``, or an array of
-HTTP message strings / ``GuzzleHttp\Message\ResponseInterface`` objects.
+response message, a ``GuzzleHttp5\Message\ResponseInterface``, or an array of
+HTTP message strings / ``GuzzleHttp5\Message\ResponseInterface`` objects.
 
 .. code-block:: php
 
@@ -214,7 +214,7 @@ will return a 500 response.
 You can inspect the requests that the server has retrieved by calling
 ``Server::received()``. This method accepts an optional ``$hydrate`` parameter
 that specifies if you are retrieving an array of HTTP requests as strings or an
-array of ``GuzzleHttp\Message\RequestInterface`` objects.
+array of ``GuzzleHttp5\Message\RequestInterface`` objects.
 
 .. code-block:: php
 

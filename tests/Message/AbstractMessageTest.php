@@ -1,13 +1,13 @@
 <?php
-namespace GuzzleHttp\Tests\Message;
+namespace GuzzleHttp5\Tests\Message;
 
-use GuzzleHttp\Message\AbstractMessage;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Stream\Stream;
+use GuzzleHttp5\Message\AbstractMessage;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Stream\Stream;
 
 /**
- * @covers \GuzzleHttp\Message\AbstractMessage
+ * @covers \GuzzleHttp5\Message\AbstractMessage
  */
 class AbstractMessageTest extends \PHPUnit_Framework_TestCase
 {
@@ -262,7 +262,7 @@ class AbstractMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testThrowsWhenMessageIsUnknown()
     {
-        $m = $this->getMockBuilder('GuzzleHttp\Message\AbstractMessage')
+        $m = $this->getMockBuilder('GuzzleHttp5\Message\AbstractMessage')
             ->getMockForAbstractClass();
         AbstractMessage::getStartLine($m);
     }

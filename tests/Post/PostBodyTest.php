@@ -1,13 +1,13 @@
 <?php
-namespace GuzzleHttp\Tests\Post;
+namespace GuzzleHttp5\Tests\Post;
 
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Post\PostBody;
-use GuzzleHttp\Post\PostFile;
-use GuzzleHttp\Query;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Post\PostBody;
+use GuzzleHttp5\Post\PostFile;
+use GuzzleHttp5\Query;
 
 /**
- * @covers GuzzleHttp\Post\PostBody
+ * @covers GuzzleHttp5\Post\PostBody
  */
 class PostBodyTest extends \PHPUnit_Framework_TestCase
 {
@@ -231,7 +231,7 @@ class PostBodyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Stream\Exception\CannotAttachException
+     * @expectedException \GuzzleHttp5\Stream\Exception\CannotAttachException
      */
     public function testCannotAttach()
     {

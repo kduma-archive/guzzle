@@ -1,11 +1,11 @@
 <?php
 
-namespace GuzzleHttp\tests\Exception;
+namespace GuzzleHttp5\tests\Exception;
 
-use GuzzleHttp\Exception\XmlParseException;
+use GuzzleHttp5\Exception\XmlParseException;
 
 /**
- * @covers GuzzleHttp\Exception\XmlParseException
+ * @covers GuzzleHttp5\Exception\XmlParseException
  */
 class XmlParseExceptionTest extends \PHPUnit_Framework_TestCase
 {

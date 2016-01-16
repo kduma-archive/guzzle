@@ -1,12 +1,12 @@
 <?php
-namespace GuzzleHttp\Tests\Event;
+namespace GuzzleHttp5\Tests\Event;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Message\Request;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Message\Request;
 
 /**
- * @covers GuzzleHttp\Event\AbstractRetryableEvent
+ * @covers GuzzleHttp5\Event\AbstractRetryableEvent
  */
 class AbstractRetryableEventTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +14,7 @@ class AbstractRetryableEventTest extends \PHPUnit_Framework_TestCase
     {
         $t = new Transaction(new Client(), new Request('GET', '/'));
         $t->transferInfo = ['foo' => 'bar'];
-        $e = $this->getMockBuilder('GuzzleHttp\Event\AbstractRetryableEvent')
+        $e = $this->getMockBuilder('GuzzleHttp5\Event\AbstractRetryableEvent')
             ->setConstructorArgs([$t])
             ->getMockForAbstractClass();
         $e->retry();
@@ -26,7 +26,7 @@ class AbstractRetryableEventTest extends \PHPUnit_Framework_TestCase
     {
         $t = new Transaction(new Client(), new Request('GET', '/'));
         $t->transferInfo = ['foo' => 'bar'];
-        $e = $this->getMockBuilder('GuzzleHttp\Event\AbstractRetryableEvent')
+        $e = $this->getMockBuilder('GuzzleHttp5\Event\AbstractRetryableEvent')
             ->setConstructorArgs([$t])
             ->getMockForAbstractClass();
         $e->retry(10);

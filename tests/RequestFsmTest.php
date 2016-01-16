@@ -1,22 +1,22 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\RequestFsm;
-use GuzzleHttp\Ring\Future\CompletedFutureArray;
-use GuzzleHttp\Subscriber\Mock;
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Client;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Event\ErrorEvent;
-use GuzzleHttp\Event\EndEvent;
-use GuzzleHttp\Message\FutureResponse;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Event\RequestEvents;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Message\MessageFactory;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\RequestFsm;
+use GuzzleHttp5\Ring\Future\CompletedFutureArray;
+use GuzzleHttp5\Subscriber\Mock;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Event\ErrorEvent;
+use GuzzleHttp5\Event\EndEvent;
+use GuzzleHttp5\Message\FutureResponse;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Event\RequestEvents;
 use React\Promise\Deferred;
 
 class RequestFsmTest extends \PHPUnit_Framework_TestCase
@@ -161,7 +161,7 @@ class RequestFsmTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \GuzzleHttp\Exception\RequestException
+     * @expectedException \GuzzleHttp5\Exception\RequestException
      * @expectedExceptionMessage Too many state transitions
      */
     public function testDetectsInfiniteLoops()

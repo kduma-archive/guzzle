@@ -1,18 +1,18 @@
 <?php
-namespace GuzzleHttp\Tests\Subscriber;
+namespace GuzzleHttp5\Tests\Subscriber;
 
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Client;
-use GuzzleHttp\Cookie\CookieJar;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Subscriber\Cookie;
-use GuzzleHttp\Subscriber\History;
-use GuzzleHttp\Subscriber\Mock;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Cookie\CookieJar;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Subscriber\Cookie;
+use GuzzleHttp5\Subscriber\History;
+use GuzzleHttp5\Subscriber\Mock;
 
 /**
- * @covers GuzzleHttp\Subscriber\Cookie
+ * @covers GuzzleHttp5\Subscriber\Cookie
  */
 class CookieTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +20,7 @@ class CookieTest extends \PHPUnit_Framework_TestCase
     {
         $request = new Request('GET', '/');
         $response = new Response(200);
-        $mock = $this->getMockBuilder('GuzzleHttp\Cookie\CookieJar')
+        $mock = $this->getMockBuilder('GuzzleHttp5\Cookie\CookieJar')
             ->setMethods(array('extractCookies'))
             ->getMock();
 

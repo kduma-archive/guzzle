@@ -1,8 +1,8 @@
 <?php
 namespace GuzzleHttp;
 
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Message\ResponseInterface;
 
 /**
  * Represents the relationship between a client, request, and response.

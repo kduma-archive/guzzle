@@ -1,14 +1,14 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\AbstractTransferEvent;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Event\EndEvent;
-use GuzzleHttp\Event\ErrorEvent;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Pool;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Event\AbstractTransferEvent;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Event\EndEvent;
+use GuzzleHttp5\Event\ErrorEvent;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Pool;
 
 class IntegrationTest extends \PHPUnit_Framework_TestCase
 {
@@ -45,11 +45,11 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
         $pool->wait();
 
         $this->assertCount(2, $events);
-        $this->assertEquals('GuzzleHttp\Event\ErrorEvent', $events[0][0]);
+        $this->assertEquals('GuzzleHttp5\Event\ErrorEvent', $events[0][0]);
         $this->assertFalse($events[0][1]);
         $this->assertNull($events[0][2]);
 
-        $this->assertEquals('GuzzleHttp\Event\EndEvent', $events[1][0]);
+        $this->assertEquals('GuzzleHttp5\Event\EndEvent', $events[1][0]);
         $this->assertFalse($events[1][1]);
         $this->assertNull($events[1][2]);
     }
@@ -93,7 +93,7 @@ class IntegrationTest extends \PHPUnit_Framework_TestCase
         );
         $response = $c->get(Server::$url);
         $this->assertEquals(202, $response->getStatusCode());
-        $this->assertEquals('GuzzleHttp\Message\Response', get_class($response));
+        $this->assertEquals('GuzzleHttp5\Message\Response', get_class($response));
     }
 
     public function testNestedFutureErrorsAreResolvedWhenSending()

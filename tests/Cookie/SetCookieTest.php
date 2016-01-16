@@ -1,11 +1,11 @@
 <?php
 
-namespace GuzzleHttp\Tests\CookieJar;
+namespace GuzzleHttp5\Tests\CookieJar;
 
-use GuzzleHttp\Cookie\SetCookie;
+use GuzzleHttp5\Cookie\SetCookie;
 
 /**
- * @covers GuzzleHttp\Cookie\SetCookie
+ * @covers GuzzleHttp5\Cookie\SetCookie
  */
 class SetCookieTest extends \PHPUnit_Framework_TestCase
 {

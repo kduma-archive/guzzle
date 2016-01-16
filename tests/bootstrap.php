@@ -2,7 +2,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../vendor/guzzlehttp/ringphp/tests/Client/Server.php';
 
-use GuzzleHttp\Tests\Server;
+use GuzzleHttp5\Tests\Server;
 
 Server::start();
 

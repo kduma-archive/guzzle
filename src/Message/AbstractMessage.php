@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
-use GuzzleHttp\Stream\StreamInterface;
+use GuzzleHttp5\Stream\StreamInterface;
 
 abstract class AbstractMessage implements MessageInterface
 {

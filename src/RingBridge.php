@@ -1,13 +1,13 @@
 <?php
 namespace GuzzleHttp;
 
-use GuzzleHttp\Message\MessageFactoryInterface;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Event\ProgressEvent;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Ring\Core;
-use GuzzleHttp\Stream\Stream;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp5\Message\MessageFactoryInterface;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Event\ProgressEvent;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Ring\Core;
+use GuzzleHttp5\Stream\Stream;
+use GuzzleHttp5\Exception\RequestException;
 
 /**
  * Provides the bridge between Guzzle requests and responses and Guzzle Ring.
@@ -158,7 +158,7 @@ class RingBridge
 Sending the request did not return a response, exception, or populate the
 transaction with a response. This is most likely due to an incorrectly
 implemented RingPHP handler. If you are simply trying to mock responses,
-then it is recommended to use the GuzzleHttp\Ring\Client\MockHandler.
+then it is recommended to use the GuzzleHttp5\Ring\Client\MockHandler.
 EOT;
         return new RequestException($message, $request);
     }

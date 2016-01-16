@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Exception;
+namespace GuzzleHttp5\Exception;
 
-use GuzzleHttp\Message\ResponseInterface;
+use GuzzleHttp5\Message\ResponseInterface;
 
 /**
  * Exception when a client is unable to parse the response body as XML or JSON

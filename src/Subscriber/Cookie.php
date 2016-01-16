@@ -1,12 +1,12 @@
 <?php
-namespace GuzzleHttp\Subscriber;
+namespace GuzzleHttp5\Subscriber;
 
-use GuzzleHttp\Cookie\CookieJar;
-use GuzzleHttp\Cookie\CookieJarInterface;
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Event\SubscriberInterface;
+use GuzzleHttp5\Cookie\CookieJar;
+use GuzzleHttp5\Cookie\CookieJarInterface;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Event\RequestEvents;
+use GuzzleHttp5\Event\SubscriberInterface;
 
 /**
  * Adds, extracts, and persists cookies between HTTP requests

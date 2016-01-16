@@ -1,10 +1,10 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
-use GuzzleHttp\Exception\ParseException;
-use GuzzleHttp\Exception\XmlParseException;
-use GuzzleHttp\Stream\StreamInterface;
-use GuzzleHttp\Utils;
+use GuzzleHttp5\Exception\ParseException;
+use GuzzleHttp5\Exception\XmlParseException;
+use GuzzleHttp5\Stream\StreamInterface;
+use GuzzleHttp5\Utils;
 
 /**
  * Guzzle HTTP response object

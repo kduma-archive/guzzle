@@ -1,11 +1,11 @@
 <?php
 
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Mimetypes;
+use GuzzleHttp5\Mimetypes;
 
 /**
- * @covers GuzzleHttp\Mimetypes
+ * @covers GuzzleHttp5\Mimetypes
  */
 class MimetypesTest extends \PHPUnit_Framework_TestCase
 {

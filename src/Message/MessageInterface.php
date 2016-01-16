@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Message;
+namespace GuzzleHttp5\Message;
 
-use GuzzleHttp\Stream\StreamInterface;
+use GuzzleHttp5\Stream\StreamInterface;
 
 /**
  * Request and response message interface

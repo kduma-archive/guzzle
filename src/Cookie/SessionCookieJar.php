@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Cookie;
+namespace GuzzleHttp5\Cookie;
 
-use GuzzleHttp\Utils;
+use GuzzleHttp5\Utils;
 
 /**
  * Persists cookies in the client session

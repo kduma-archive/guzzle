@@ -7,9 +7,9 @@ Guzzle Upgrade Guide
 ## Rewritten Adapter Layer
 
 Guzzle now uses [RingPHP](http://ringphp.readthedocs.org/en/latest) to send
-HTTP requests. The `adapter` option in a `GuzzleHttp\Client` constructor
+HTTP requests. The `adapter` option in a `GuzzleHttp5\Client` constructor
 is still supported, but it has now been renamed to `handler`. Instead of
-passing a `GuzzleHttp\Adapter\AdapterInterface`, you must now pass a PHP
+passing a `GuzzleHttp5\Adapter\AdapterInterface`, you must now pass a PHP
 `callable` that follows the RingPHP specification.
 
 ## Removed Fluent Interfaces
@@ -17,25 +17,25 @@ passing a `GuzzleHttp\Adapter\AdapterInterface`, you must now pass a PHP
 [Fluent interfaces were removed](http://ocramius.github.io/blog/fluent-interfaces-are-evil)
 from the following classes:
 
-- `GuzzleHttp\Collection`
-- `GuzzleHttp\Url`
-- `GuzzleHttp\Query`
-- `GuzzleHttp\Post\PostBody`
-- `GuzzleHttp\Cookie\SetCookie`
+- `GuzzleHttp5\Collection`
+- `GuzzleHttp5\Url`
+- `GuzzleHttp5\Query`
+- `GuzzleHttp5\Post\PostBody`
+- `GuzzleHttp5\Cookie\SetCookie`
 
 ## Removed functions.php
 
 Removed "functions.php", so that Guzzle is truly PSR-4 compliant. The following
 functions can be used as replacements.
 
-- `GuzzleHttp\json_decode` -> `GuzzleHttp\Utils::jsonDecode`
-- `GuzzleHttp\get_path` -> `GuzzleHttp\Utils::getPath`
-- `GuzzleHttp\Utils::setPath` -> `GuzzleHttp\set_path`
-- `GuzzleHttp\Pool::batch` -> `GuzzleHttp\batch`. This function is, however,
-  deprecated in favor of using `GuzzleHttp\Pool::batch()`.
+- `GuzzleHttp5\json_decode` -> `GuzzleHttp5\Utils::jsonDecode`
+- `GuzzleHttp5\get_path` -> `GuzzleHttp5\Utils::getPath`
+- `GuzzleHttp5\Utils::setPath` -> `GuzzleHttp5\set_path`
+- `GuzzleHttp5\Pool::batch` -> `GuzzleHttp5\batch`. This function is, however,
+  deprecated in favor of using `GuzzleHttp5\Pool::batch()`.
 
 The "procedural" global client has been removed with no replacement (e.g.,
-`GuzzleHttp\get()`, `GuzzleHttp\post()`, etc.). Use a `GuzzleHttp\Client`
+`GuzzleHttp5\get()`, `GuzzleHttp5\post()`, etc.). Use a `GuzzleHttp5\Client`
 object as a replacement.
 
 ## `throwImmediately` has been removed
@@ -59,7 +59,7 @@ written to.
 ## Updates to HTTP Messages
 
 Removed the `asArray` parameter from
-`GuzzleHttp\Message\MessageInterface::getHeader`. If you want to get a header
+`GuzzleHttp5\Message\MessageInterface::getHeader`. If you want to get a header
 value as an array, then use the newly added `getHeaderAsArray()` method of
 `MessageInterface`. This change makes the Guzzle interfaces compatible with
 the PSR-7 interfaces.
@@ -76,7 +76,7 @@ the PSR-7 interfaces.
 - Various namespaces have been removed or renamed.
 - No longer requiring the Symfony EventDispatcher. A custom event dispatcher
   based on the Symfony EventDispatcher is
-  now utilized in `GuzzleHttp\Event\EmitterInterface` (resulting in significant
+  now utilized in `GuzzleHttp5\Event\EmitterInterface` (resulting in significant
   speed and functionality improvements).
 
 Changes per Guzzle 3.x namespace are described below.
@@ -97,7 +97,7 @@ has been implemented yet, but hoping to utilize a PSR cache interface).
   library for unrecoverable exceptions.
 - `FromConfigInterface` has been removed.
 - `Guzzle\Common\Version` has been removed. The VERSION constant can be found
-  at `GuzzleHttp\ClientInterface::VERSION`.
+  at `GuzzleHttp5\ClientInterface::VERSION`.
 
 ### Collection
 
@@ -111,15 +111,15 @@ has been implemented yet, but hoping to utilize a PSR cache interface).
 ### Events
 
 Guzzle no longer requires Symfony's EventDispatcher component. Guzzle now uses
-`GuzzleHttp\Event\Emitter`.
+`GuzzleHttp5\Event\Emitter`.
 
 - `Symfony\Component\EventDispatcher\EventDispatcherInterface` is replaced by
-  `GuzzleHttp\Event\EmitterInterface`.
+  `GuzzleHttp5\Event\EmitterInterface`.
 - `Symfony\Component\EventDispatcher\EventDispatcher` is replaced by
-  `GuzzleHttp\Event\Emitter`.
+  `GuzzleHttp5\Event\Emitter`.
 - `Symfony\Component\EventDispatcher\Event` is replaced by
-  `GuzzleHttp\Event\Event`, and Guzzle now has an EventInterface in
-  `GuzzleHttp\Event\EventInterface`.
+  `GuzzleHttp5\Event\Event`, and Guzzle now has an EventInterface in
+  `GuzzleHttp5\Event\EventInterface`.
 - `AbstractHasDispatcher` has moved to a trait, `HasEmitterTrait`, and
   `HasDispatcherInterface` has moved to `HasEmitterInterface`. Retrieving the
   event emitter of a request, client, etc. now uses the `getEmitter` method
@@ -165,14 +165,14 @@ $request->getEmitter()->on('foo', function (Event $event, $name) { /* ... */ } )
 - Sending requests in parallel is still possible, but batching is no longer a
   concept of the HTTP layer. Instead, you must use the `complete` and `error`
   events to asynchronously manage parallel request transfers.
-- `Guzzle\Http\Url` has moved to `GuzzleHttp\Url`.
-- `Guzzle\Http\QueryString` has moved to `GuzzleHttp\Query`.
+- `Guzzle\Http\Url` has moved to `GuzzleHttp5\Url`.
+- `Guzzle\Http\QueryString` has moved to `GuzzleHttp5\Query`.
 - QueryAggregators have been rewritten so that they are simply callable
   functions.
-- `GuzzleHttp\StaticClient` has been removed. Use the functions provided in
+- `GuzzleHttp5\StaticClient` has been removed. Use the functions provided in
   `functions.php` for an easy to use static client instance.
-- Exceptions in `GuzzleHttp\Exception` have been updated to all extend from
-  `GuzzleHttp\Exception\TransferException`.
+- Exceptions in `GuzzleHttp5\Exception` have been updated to all extend from
+  `GuzzleHttp5\Exception\TransferException`.
 
 ### Client
 
@@ -193,7 +193,7 @@ $request = $client->createRequest('GET', '/');
 $response = $client->send($request);
 ```
 
-`GuzzleHttp\ClientInterface` has changed.
+`GuzzleHttp5\ClientInterface` has changed.
 
 - The `send` method no longer accepts more than one request. Use `sendAll` to
   send multiple requests in parallel.
@@ -203,7 +203,7 @@ $response = $client->send($request);
 - `setSslVerification()` has been removed. Use default request options instead,
   like `$client->setConfig('defaults/verify', true)`.
 
-`GuzzleHttp\Client` has changed.
+`GuzzleHttp5\Client` has changed.
 
 - The constructor now accepts only an associative array. You can include a
   `base_url` string or array to use a URI template as the base URL of a client.
@@ -222,28 +222,28 @@ $response = $client->send($request);
 Messages no longer have references to their counterparts (i.e., a request no
 longer has a reference to it's response, and a response no loger has a
 reference to its request). This association is now managed through a
-`GuzzleHttp\Adapter\TransactionInterface` object. You can get references to
+`GuzzleHttp5\Adapter\TransactionInterface` object. You can get references to
 these transaction objects using request events that are emitted over the
 lifecycle of a request.
 
 #### Requests with a body
 
-- `GuzzleHttp\Message\EntityEnclosingRequest` and
-  `GuzzleHttp\Message\EntityEnclosingRequestInterface` have been removed. The
+- `GuzzleHttp5\Message\EntityEnclosingRequest` and
+  `GuzzleHttp5\Message\EntityEnclosingRequestInterface` have been removed. The
   separation between requests that contain a body and requests that do not
-  contain a body has been removed, and now `GuzzleHttp\Message\RequestInterface`
+  contain a body has been removed, and now `GuzzleHttp5\Message\RequestInterface`
   handles both use cases.
-- Any method that previously accepts a `GuzzleHttp\Response` object now accept a
-  `GuzzleHttp\Message\ResponseInterface`.
-- `GuzzleHttp\Message\RequestFactoryInterface` has been renamed to
-  `GuzzleHttp\Message\MessageFactoryInterface`. This interface is used to create
+- Any method that previously accepts a `GuzzleHttp5\Response` object now accept a
+  `GuzzleHttp5\Message\ResponseInterface`.
+- `GuzzleHttp5\Message\RequestFactoryInterface` has been renamed to
+  `GuzzleHttp5\Message\MessageFactoryInterface`. This interface is used to create
   both requests and responses and is implemented in
-  `GuzzleHttp\Message\MessageFactory`.
+  `GuzzleHttp5\Message\MessageFactory`.
 - POST field and file methods have been removed from the request object. You
-  must now use the methods made available to `GuzzleHttp\Post\PostBodyInterface`
+  must now use the methods made available to `GuzzleHttp5\Post\PostBodyInterface`
   to control the format of a POST body. Requests that are created using a
-  standard `GuzzleHttp\Message\MessageFactoryInterface` will automatically use
-  a `GuzzleHttp\Post\PostBody` body if the body was passed as an array or if
+  standard `GuzzleHttp5\Message\MessageFactoryInterface` will automatically use
+  a `GuzzleHttp5\Post\PostBody` body if the body was passed as an array or if
   the method is POST and no body is provided.
 
 ```php
@@ -254,43 +254,43 @@ $request->getBody()->addFile(new PostFile('file_key', fopen('/path/to/content', 
 
 #### Headers
 
-- `GuzzleHttp\Message\Header` has been removed. Header values are now simply
+- `GuzzleHttp5\Message\Header` has been removed. Header values are now simply
   represented by an array of values or as a string. Header values are returned
   as a string by default when retrieving a header value from a message. You can
   pass an optional argument of `true` to retrieve a header value as an array
   of strings instead of a single concatenated string.
-- `GuzzleHttp\PostFile` and `GuzzleHttp\PostFileInterface` have been moved to
-  `GuzzleHttp\Post`. This interface has been simplified and now allows the
+- `GuzzleHttp5\PostFile` and `GuzzleHttp5\PostFileInterface` have been moved to
+  `GuzzleHttp5\Post`. This interface has been simplified and now allows the
   addition of arbitrary headers.
-- Custom headers like `GuzzleHttp\Message\Header\Link` have been removed. Most
+- Custom headers like `GuzzleHttp5\Message\Header\Link` have been removed. Most
   of the custom headers are now handled separately in specific
-  subscribers/plugins, and `GuzzleHttp\Message\HeaderValues::parseParams()` has
+  subscribers/plugins, and `GuzzleHttp5\Message\HeaderValues::parseParams()` has
   been updated to properly handle headers that contain parameters (like the
   `Link` header).
 
 #### Responses
 
-- `GuzzleHttp\Message\Response::getInfo()` and
-  `GuzzleHttp\Message\Response::setInfo()` have been removed. Use the event
+- `GuzzleHttp5\Message\Response::getInfo()` and
+  `GuzzleHttp5\Message\Response::setInfo()` have been removed. Use the event
   system to retrieve this type of information.
-- `GuzzleHttp\Message\Response::getRawHeaders()` has been removed.
-- `GuzzleHttp\Message\Response::getMessage()` has been removed.
-- `GuzzleHttp\Message\Response::calculateAge()` and other cache specific
+- `GuzzleHttp5\Message\Response::getRawHeaders()` has been removed.
+- `GuzzleHttp5\Message\Response::getMessage()` has been removed.
+- `GuzzleHttp5\Message\Response::calculateAge()` and other cache specific
   methods have moved to the CacheSubscriber.
 - Header specific helper functions like `getContentMd5()` have been removed.
   Just use `getHeader('Content-MD5')` instead.
-- `GuzzleHttp\Message\Response::setRequest()` and
-  `GuzzleHttp\Message\Response::getRequest()` have been removed. Use the event
+- `GuzzleHttp5\Message\Response::setRequest()` and
+  `GuzzleHttp5\Message\Response::getRequest()` have been removed. Use the event
   system to work with request and response objects as a transaction.
-- `GuzzleHttp\Message\Response::getRedirectCount()` has been removed. Use the
+- `GuzzleHttp5\Message\Response::getRedirectCount()` has been removed. Use the
   Redirect subscriber instead.
-- `GuzzleHttp\Message\Response::isSuccessful()` and other related methods have
+- `GuzzleHttp5\Message\Response::isSuccessful()` and other related methods have
   been removed. Use `getStatusCode()` instead.
 
 #### Streaming responses
 
 Streaming requests can now be created by a client directly, returning a
-`GuzzleHttp\Message\ResponseInterface` object that contains a body stream
+`GuzzleHttp5\Message\ResponseInterface` object that contains a body stream
 referencing an open PHP HTTP stream.
 
 ```php
@@ -325,17 +325,17 @@ $request = $client->createRequest('GET', '/', [
 #### EntityBody
 
 EntityBody interfaces and classes have been removed or moved to
-`GuzzleHttp\Stream`. All classes and interfaces that once required
-`GuzzleHttp\EntityBodyInterface` now require
-`GuzzleHttp\Stream\StreamInterface`. Creating a new body for a request no
-longer uses `GuzzleHttp\EntityBody::factory` but now uses
-`GuzzleHttp\Stream\Stream::factory` or even better:
-`GuzzleHttp\Stream\create()`.
+`GuzzleHttp5\Stream`. All classes and interfaces that once required
+`GuzzleHttp5\EntityBodyInterface` now require
+`GuzzleHttp5\Stream\StreamInterface`. Creating a new body for a request no
+longer uses `GuzzleHttp5\EntityBody::factory` but now uses
+`GuzzleHttp5\Stream\Stream::factory` or even better:
+`GuzzleHttp5\Stream\create()`.
 
-- `Guzzle\Http\EntityBodyInterface` is now `GuzzleHttp\Stream\StreamInterface`
-- `Guzzle\Http\EntityBody` is now `GuzzleHttp\Stream\Stream`
-- `Guzzle\Http\CachingEntityBody` is now `GuzzleHttp\Stream\CachingStream`
-- `Guzzle\Http\ReadLimitEntityBody` is now `GuzzleHttp\Stream\LimitStream`
+- `Guzzle\Http\EntityBodyInterface` is now `GuzzleHttp5\Stream\StreamInterface`
+- `Guzzle\Http\EntityBody` is now `GuzzleHttp5\Stream\Stream`
+- `Guzzle\Http\CachingEntityBody` is now `GuzzleHttp5\Stream\CachingStream`
+- `Guzzle\Http\ReadLimitEntityBody` is now `GuzzleHttp5\Stream\LimitStream`
 - `Guzzle\Http\IoEmittyinEntityBody` has been removed.
 
 #### Request lifecycle events
@@ -344,17 +344,17 @@ Requests previously submitted a large number of requests. The number of events
 emitted over the lifecycle of a request has been significantly reduced to make
 it easier to understand how to extend the behavior of a request. All events
 emitted during the lifecycle of a request now emit a custom
-`GuzzleHttp\Event\EventInterface` object that contains context providing
+`GuzzleHttp5\Event\EventInterface` object that contains context providing
 methods and a way in which to modify the transaction at that specific point in
 time (e.g., intercept the request and set a response on the transaction).
 
 - `request.before_send` has been renamed to `before` and now emits a
-  `GuzzleHttp\Event\BeforeEvent`
+  `GuzzleHttp5\Event\BeforeEvent`
 - `request.complete` has been renamed to `complete` and now emits a
-  `GuzzleHttp\Event\CompleteEvent`.
+  `GuzzleHttp5\Event\CompleteEvent`.
 - `request.sent` has been removed. Use `complete`.
 - `request.success` has been removed. Use `complete`.
-- `error` is now an event that emits a `GuzzleHttp\Event\ErrorEvent`.
+- `error` is now an event that emits a `GuzzleHttp5\Event\ErrorEvent`.
 - `request.exception` has been removed. Use `error`.
 - `request.receive.status_line` has been removed.
 - `curl.callback.progress` has been removed. Use a custom `StreamInterface` to
@@ -366,11 +366,11 @@ time (e.g., intercept the request and set a response on the transaction).
 
 `headers` is a new event that is emitted after the response headers of a
 request have been received before the body of the response is downloaded. This
-event emits a `GuzzleHttp\Event\HeadersEvent`.
+event emits a `GuzzleHttp5\Event\HeadersEvent`.
 
 You can intercept a request and inject a response using the `intercept()` event
-of a `GuzzleHttp\Event\BeforeEvent`, `GuzzleHttp\Event\CompleteEvent`, and
-`GuzzleHttp\Event\ErrorEvent` event.
+of a `GuzzleHttp5\Event\BeforeEvent`, `GuzzleHttp5\Event\CompleteEvent`, and
+`GuzzleHttp5\Event\ErrorEvent` event.
 
 See: http://docs.guzzlephp.org/en/latest/events.html
 
@@ -398,7 +398,7 @@ For a replacement of these iterators, see https://github.com/nikic/iter
 The LogPlugin has moved to https://github.com/guzzle/log-subscriber. The
 `Guzzle\Log` namespace has been removed. Guzzle now relies on
 `Psr\Log\LoggerInterface` for all logging. The MessageFormatter class has been
-moved to `GuzzleHttp\Subscriber\Log\Formatter`.
+moved to `GuzzleHttp5\Subscriber\Log\Formatter`.
 
 ## Parser
 
@@ -408,39 +408,39 @@ templates, and URLs; however, this level of complexity is not needed in Guzzle
 so it has been removed.
 
 - Cookie: Cookie parsing logic has been moved to
-  `GuzzleHttp\Cookie\SetCookie::fromString`.
+  `GuzzleHttp5\Cookie\SetCookie::fromString`.
 - Message: Message parsing logic for both requests and responses has been moved
-  to `GuzzleHttp\Message\MessageFactory::fromMessage`. Message parsing is only
+  to `GuzzleHttp5\Message\MessageFactory::fromMessage`. Message parsing is only
   used in debugging or deserializing messages, so it doesn't make sense for
   Guzzle as a library to add this level of complexity to parsing messages.
 - UriTemplate: URI template parsing has been moved to
-  `GuzzleHttp\UriTemplate`. The Guzzle library will automatically use the PECL
+  `GuzzleHttp5\UriTemplate`. The Guzzle library will automatically use the PECL
   URI template library if it is installed.
-- Url: URL parsing is now performed in `GuzzleHttp\Url::fromString` (previously
+- Url: URL parsing is now performed in `GuzzleHttp5\Url::fromString` (previously
   it was `Guzzle\Http\Url::factory()`). If custom URL parsing is necessary,
-  then developers are free to subclass `GuzzleHttp\Url`.
+  then developers are free to subclass `GuzzleHttp5\Url`.
 
 ## Plugin
 
-The `Guzzle\Plugin` namespace has been renamed to `GuzzleHttp\Subscriber`.
+The `Guzzle\Plugin` namespace has been renamed to `GuzzleHttp5\Subscriber`.
 Several plugins are shipping with the core Guzzle library under this namespace.
 
-- `GuzzleHttp\Subscriber\Cookie`: Replaces the old CookiePlugin. Cookie jar
-  code has moved to `GuzzleHttp\Cookie`.
-- `GuzzleHttp\Subscriber\History`: Replaces the old HistoryPlugin.
-- `GuzzleHttp\Subscriber\HttpError`: Throws errors when a bad HTTP response is
+- `GuzzleHttp5\Subscriber\Cookie`: Replaces the old CookiePlugin. Cookie jar
+  code has moved to `GuzzleHttp5\Cookie`.
+- `GuzzleHttp5\Subscriber\History`: Replaces the old HistoryPlugin.
+- `GuzzleHttp5\Subscriber\HttpError`: Throws errors when a bad HTTP response is
   received.
-- `GuzzleHttp\Subscriber\Mock`: Replaces the old MockPlugin.
-- `GuzzleHttp\Subscriber\Prepare`: Prepares the body of a request just before
+- `GuzzleHttp5\Subscriber\Mock`: Replaces the old MockPlugin.
+- `GuzzleHttp5\Subscriber\Prepare`: Prepares the body of a request just before
   sending. This subscriber is attached to all requests by default.
-- `GuzzleHttp\Subscriber\Redirect`: Replaces the RedirectPlugin.
+- `GuzzleHttp5\Subscriber\Redirect`: Replaces the RedirectPlugin.
 
 The following plugins have been removed (third-parties are free to re-implement
 these if needed):
 
-- `GuzzleHttp\Plugin\Async` has been removed.
-- `GuzzleHttp\Plugin\CurlAuth` has been removed.
-- `GuzzleHttp\Plugin\ErrorResponse\ErrorResponsePlugin` has been removed. This
+- `GuzzleHttp5\Plugin\Async` has been removed.
+- `GuzzleHttp5\Plugin\CurlAuth` has been removed.
+- `GuzzleHttp5\Plugin\ErrorResponse\ErrorResponsePlugin` has been removed. This
   functionality should instead be implemented with event listeners that occur
   after normal response parsing occurs in the guzzle/command package.
 
@@ -457,7 +457,7 @@ in separate repositories:
 - `Guzzle\Http\Plugin\Md5\Md5Plugin` has moved to
   https://github.com/guzzle/message-integrity-subscriber
 - `Guzzle\Http\Plugin\Mock\MockPlugin` has moved to
-  `GuzzleHttp\Subscriber\MockSubscriber`.
+  `GuzzleHttp5\Subscriber\MockSubscriber`.
 - `Guzzle\Http\Plugin\Oauth\OauthPlugin` has moved to
   https://github.com/guzzle/oauth-subscriber
 
@@ -486,10 +486,10 @@ allow developers to more easily extend and decorate stream behavior.
 
 - `getStream` and `setStream` have been removed to better encapsulate streams.
 - `getMetadata` and `setMetadata` have been removed in favor of
-  `GuzzleHttp\Stream\MetadataStreamInterface`.
+  `GuzzleHttp5\Stream\MetadataStreamInterface`.
 - `getWrapper`, `getWrapperData`, `getStreamType`, and `getUri` have all been
   removed. This data is accessible when
-  using streams that implement `GuzzleHttp\Stream\MetadataStreamInterface`.
+  using streams that implement `GuzzleHttp5\Stream\MetadataStreamInterface`.
 - `rewind` has been removed. Use `seek(0)` for a similar behavior.
 
 ## Renamed methods
@@ -498,21 +498,21 @@ allow developers to more easily extend and decorate stream behavior.
 - `feof` has been renamed to `eof`.
 - `ftell` has been renamed to `tell`.
 - `readLine` has moved from an instance method to a static class method of
-  `GuzzleHttp\Stream\Stream`.
+  `GuzzleHttp5\Stream\Stream`.
 
 ## Metadata streams
 
-`GuzzleHttp\Stream\MetadataStreamInterface` has been added to denote streams
+`GuzzleHttp5\Stream\MetadataStreamInterface` has been added to denote streams
 that contain additional metadata accessible via `getMetadata()`.
-`GuzzleHttp\Stream\StreamInterface::getMetadata` and
-`GuzzleHttp\Stream\StreamInterface::setMetadata` have been removed.
+`GuzzleHttp5\Stream\StreamInterface::getMetadata` and
+`GuzzleHttp5\Stream\StreamInterface::setMetadata` have been removed.
 
 ## StreamRequestFactory
 
 The entire concept of the StreamRequestFactory has been removed. The way this
 was used in Guzzle 3 broke the actual interface of sending streaming requests
 (instead of getting back a Response, you got a StreamInterface). Streeaming
-PHP requests are now implemented throught the `GuzzleHttp\Adapter\StreamAdapter`.
+PHP requests are now implemented throught the `GuzzleHttp5\Adapter\StreamAdapter`.
 
 3.6 to 3.7
 ----------

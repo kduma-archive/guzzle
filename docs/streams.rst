@@ -31,14 +31,14 @@ Creating Streams
 ================
 
 The best way to create a stream is using the static factory method,
-``GuzzleHttp\Stream\Stream::factory()``. This factory accepts strings,
+``GuzzleHttp5\Stream\Stream::factory()``. This factory accepts strings,
 resources returned from ``fopen()``, an object that implements
 ``__toString()``, and an object that implements
-``GuzzleHttp\Stream\StreamInterface``.
+``GuzzleHttp5\Stream\StreamInterface``.
 
 .. code-block:: php
 
-    use GuzzleHttp\Stream\Stream;
+    use GuzzleHttp5\Stream\Stream;
 
     $stream = Stream::factory('string data');
     echo $stream;
@@ -62,7 +62,7 @@ and can optionally expose other custom data.
 
 .. code-block:: php
 
-    use GuzzleHttp\Stream\Stream;
+    use GuzzleHttp5\Stream\Stream;
 
     $resource = fopen('/path/to/file', 'r');
     $stream = Stream::factory($resource);
@@ -94,8 +94,8 @@ then on disk.
 
 .. code-block:: php
 
-    use GuzzleHttp\Stream\Stream;
-    use GuzzleHttp\Stream\CachingStream;
+    use GuzzleHttp5\Stream\Stream;
+    use GuzzleHttp5\Stream\CachingStream;
 
     $original = Stream::factory(fopen('http://www.google.com', 'r'));
     $stream = new CachingStream($original);
@@ -117,8 +117,8 @@ chunks (e.g. Amazon S3's multipart upload API).
 
 .. code-block:: php
 
-    use GuzzleHttp\Stream\Stream;
-    use GuzzleHttp\Stream\LimitStream;
+    use GuzzleHttp5\Stream\Stream;
+    use GuzzleHttp5\Stream\LimitStream;
 
     $original = Stream::factory(fopen('/tmp/test.txt', 'r+'));
     echo $original->getSize();
@@ -138,8 +138,8 @@ NoSeekStream wraps a stream and does not allow seeking.
 
 .. code-block:: php
 
-    use GuzzleHttp\Stream\Stream;
-    use GuzzleHttp\Stream\LimitStream;
+    use GuzzleHttp5\Stream\Stream;
+    use GuzzleHttp5\Stream\LimitStream;
 
     $original = Stream::factory('foo');
     $noSeek = new NoSeekStream($original);
@@ -156,8 +156,8 @@ Creating Custom Decorators
 --------------------------
 
 Creating a stream decorator is very easy thanks to the
-``GuzzleHttp\Stream\StreamDecoratorTrait``. This trait provides methods that
-implement ``GuzzleHttp\Stream\StreamInterface`` by proxying to an underlying
+``GuzzleHttp5\Stream\StreamDecoratorTrait``. This trait provides methods that
+implement ``GuzzleHttp5\Stream\StreamInterface`` by proxying to an underlying
 stream. Just ``use`` the ``StreamDecoratorTrait`` and implement your custom
 methods.
 
@@ -167,7 +167,7 @@ byte is read from a stream. This could be implemented by overriding the
 
 .. code-block:: php
 
-    use GuzzleHttp\Stream\StreamDecoratorTrait;
+    use GuzzleHttp5\Stream\StreamDecoratorTrait;
 
     class EofCallbackStream implements StreamInterface
     {
@@ -198,7 +198,7 @@ This decorator could be added to any existing stream and used like so:
 
 .. code-block:: php
 
-    use GuzzleHttp\Stream\Stream;
+    use GuzzleHttp5\Stream\Stream;
 
     $original = Stream::factory('foo');
     $eofStream = new EofCallbackStream($original, function () {

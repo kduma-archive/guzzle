@@ -25,7 +25,7 @@ headers:
 
 .. code-block:: php
 
-    use GuzzleHttp\Message\Request;
+    use GuzzleHttp5\Message\Request;
 
     $request = new Request('GET', '/', [
         'Link' => '<http:/.../front.jpeg>; rel="front"; type="image/jpeg"'
@@ -64,14 +64,14 @@ You can check to see if a request or response has a body using the
 
 .. code-block:: php
 
-    $response = GuzzleHttp\get('http://httpbin.org/get');
+    $response = GuzzleHttp5\get('http://httpbin.org/get');
     if ($response->getBody()) {
         echo $response->getBody();
         // JSON string: { ... }
     }
 
 The body used in request and response objects is a
-``GuzzleHttp\Stream\StreamInterface``. This stream is used for both uploading
+``GuzzleHttp5\Stream\StreamInterface``. This stream is used for both uploading
 data and downloading data. Guzzle will, by default, store the body of a message
 in a stream that uses PHP temp streams. When the size of the body exceeds
 2 MB, the stream will automatically switch to storing data on disk rather than
@@ -82,21 +82,21 @@ method:
 
 .. code-block:: php
 
-    use GuzzleHttp\Stream\Stream;
+    use GuzzleHttp5\Stream\Stream;
     $request = $client->createRequest('PUT', 'http://httpbin.org/put');
     $request->setBody(Stream::factory('foo'));
 
 The easiest way to create a body for a request is using the static
-``GuzzleHttp\Stream\Stream::factory()`` method. This method accepts various
+``GuzzleHttp5\Stream\Stream::factory()`` method. This method accepts various
 inputs like strings, resources returned from ``fopen()``, and other
-``GuzzleHttp\Stream\StreamInterface`` objects.
+``GuzzleHttp5\Stream\StreamInterface`` objects.
 
 The body of a request or response can be cast to a string or you can read and
 write bytes off of the stream as needed.
 
 .. code-block:: php
 
-    use GuzzleHttp\Stream\Stream;
+    use GuzzleHttp5\Stream\Stream;
     $request = $client->createRequest('PUT', 'http://httpbin.org/put', ['body' => 'testing...']);
 
     echo $request->getBody()->read(4);
@@ -118,7 +118,7 @@ be applied to a resource, the identifier of the resource, and the protocol
 version to use.
 
 Clients are used to create request messages. More precisely, clients use
-a ``GuzzleHttp\Message\MessageFactoryInterface`` to create request messages.
+a ``GuzzleHttp5\Message\MessageFactoryInterface`` to create request messages.
 You create requests with a client using the ``createRequest()`` method.
 
 .. code-block:: php
@@ -240,7 +240,7 @@ Query string
 ~~~~~~~~~~~~
 
 You can get the query string of the request using the ``getQuery()`` method.
-This method returns a ``GuzzleHttp\Query`` object. A Query object can be
+This method returns a ``GuzzleHttp5\Query`` object. A Query object can be
 accessed like a PHP array, iterated in a foreach statement like a PHP array,
 and cast to a string.
 
@@ -298,7 +298,7 @@ The ``setAggregator()`` method accepts a ``callable`` which is used to convert
 a deeply nested array of query string variables into a flattened array of key
 value pairs. The callable accepts an array of query data and returns a
 flattened array of key value pairs where each value is an array of strings.
-You can use the ``GuzzleHttp\Query::walkQuery()`` static function to easily
+You can use the ``GuzzleHttp5\Query::walkQuery()`` static function to easily
 create custom query aggregators.
 
 Host
@@ -351,7 +351,7 @@ method of a request.
     $request = $client->createRequest('GET', '/');
     $config = $request->getConfig();
 
-The config object is a ``GuzzleHttp\Collection`` object that acts like
+The config object is a ``GuzzleHttp5\Collection`` object that acts like
 an associative array. You can grab values from the collection using array like
 access. You can also modify and remove values using array like access.
 
@@ -393,7 +393,7 @@ allow customization through request configuration options.
 Event Emitter
 -------------
 
-Request objects implement ``GuzzleHttp\Event\HasEmitterInterface``, so they
+Request objects implement ``GuzzleHttp5\Event\HasEmitterInterface``, so they
 have a method called ``getEmitter()`` that can be used to get an event emitter
 used by the request. Any listener or subscriber attached to a request will only
 be triggered for the lifecycle events of a specific request. Conversely, adding
@@ -416,7 +416,7 @@ status code, and reason phrase.
 
 .. code-block:: php
 
-    $response = GuzzleHttp\get('http://httpbin.org/get');
+    $response = GuzzleHttp5\get('http://httpbin.org/get');
     echo $response->getStatusCode();
     // 200
     echo $response->getReasonPhrase();
@@ -474,10 +474,10 @@ occurred while transferring a request.
 
 .. code-block:: php
 
-    $response = GuzzleHttp\get('http://httpbin.org/get');
+    $response = GuzzleHttp5\get('http://httpbin.org/get');
     echo $response->getEffectiveUrl();
     // http://httpbin.org/get
 
-    $response = GuzzleHttp\get('http://httpbin.org/redirect-to?url=http://www.google.com');
+    $response = GuzzleHttp5\get('http://httpbin.org/redirect-to?url=http://www.google.com');
     echo $response->getEffectiveUrl();
     // http://www.google.com

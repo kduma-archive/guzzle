@@ -1,8 +1,8 @@
 <?php
-namespace GuzzleHttp\Event;
+namespace GuzzleHttp5\Event;
 
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Ring\Future\FutureInterface;
+use GuzzleHttp5\Message\ResponseInterface;
+use GuzzleHttp5\Ring\Future\FutureInterface;
 
 /**
  * Event that contains transfer statistics, and can be intercepted.

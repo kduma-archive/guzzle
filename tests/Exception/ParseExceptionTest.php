@@ -1,12 +1,12 @@
 <?php
 
-namespace GuzzleHttp\Tests\Event;
+namespace GuzzleHttp5\Tests\Event;
 
-use GuzzleHttp\Exception\ParseException;
-use GuzzleHttp\Message\Response;
+use GuzzleHttp5\Exception\ParseException;
+use GuzzleHttp5\Message\Response;
 
 /**
- * @covers GuzzleHttp\Exception\ParseException
+ * @covers GuzzleHttp5\Exception\ParseException
  */
 class ParseExceptionTest extends \PHPUnit_Framework_TestCase
 {

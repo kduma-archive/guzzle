@@ -1,18 +1,18 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\ProgressEvent;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\RingBridge;
-use GuzzleHttp\Stream\Stream;
-use GuzzleHttp\Transaction;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Ring\Client\MockHandler;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Event\ErrorEvent;
-use GuzzleHttp\RequestFsm;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Event\ProgressEvent;
+use GuzzleHttp5\Message\MessageFactory;
+use GuzzleHttp5\RingBridge;
+use GuzzleHttp5\Stream\Stream;
+use GuzzleHttp5\Transaction;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Ring\Client\MockHandler;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Event\ErrorEvent;
+use GuzzleHttp5\RequestFsm;
 
 class RingBridgeTest extends \PHPUnit_Framework_TestCase
 {
@@ -176,7 +176,7 @@ class RingBridgeTest extends \PHPUnit_Framework_TestCase
     {
         $r = new Request('GET', 'http://www.google.com');
         $e = RingBridge::getNoRingResponseException($r);
-        $this->assertInstanceOf('GuzzleHttp\Exception\RequestException', $e);
+        $this->assertInstanceOf('GuzzleHttp5\Exception\RequestException', $e);
         $this->assertSame($r, $e->getRequest());
     }
 

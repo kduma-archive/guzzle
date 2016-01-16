@@ -1,8 +1,8 @@
 <?php
-namespace GuzzleHttp\Post;
+namespace GuzzleHttp5\Post;
 
-use GuzzleHttp\Message\AppliesHeadersInterface;
-use GuzzleHttp\Stream\StreamInterface;
+use GuzzleHttp5\Message\AppliesHeadersInterface;
+use GuzzleHttp5\Stream\StreamInterface;
 
 /**
  * Represents a POST body that is sent as either a multipart/form-data stream

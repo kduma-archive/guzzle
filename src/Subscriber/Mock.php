@@ -1,13 +1,13 @@
 <?php
-namespace GuzzleHttp\Subscriber;
+namespace GuzzleHttp5\Subscriber;
 
-use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Event\SubscriberInterface;
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\Stream\StreamInterface;
+use GuzzleHttp5\Event\RequestEvents;
+use GuzzleHttp5\Event\SubscriberInterface;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Message\MessageFactory;
+use GuzzleHttp5\Message\ResponseInterface;
+use GuzzleHttp5\Stream\StreamInterface;
 
 /**
  * Queues mock responses or exceptions and delivers mock responses or

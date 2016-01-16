@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Event;
+namespace GuzzleHttp5\Event;
 
-use GuzzleHttp\Transaction;
+use GuzzleHttp5\Transaction;
 
 /**
  * Event object emitted when upload or download progress is made.

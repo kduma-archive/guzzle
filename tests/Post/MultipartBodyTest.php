@@ -1,11 +1,11 @@
 <?php
-namespace GuzzleHttp\Tests\Post;
+namespace GuzzleHttp5\Tests\Post;
 
-use GuzzleHttp\Post\MultipartBody;
-use GuzzleHttp\Post\PostFile;
+use GuzzleHttp5\Post\MultipartBody;
+use GuzzleHttp5\Post\PostFile;
 
 /**
- * @covers GuzzleHttp\Post\MultipartBody
+ * @covers GuzzleHttp5\Post\MultipartBody
  */
 class MultipartBodyTest extends \PHPUnit_Framework_TestCase
 {
@@ -71,7 +71,7 @@ class MultipartBodyTest extends \PHPUnit_Framework_TestCase
 
     public function testIsSeekableReturnsTrueIfAllAreSeekable()
     {
-        $s = $this->getMockBuilder('GuzzleHttp\Stream\StreamInterface')
+        $s = $this->getMockBuilder('GuzzleHttp5\Stream\StreamInterface')
             ->setMethods(['isSeekable', 'isReadable'])
             ->getMockForAbstractClass();
         $s->expects($this->once())
@@ -105,7 +105,7 @@ class MultipartBodyTest extends \PHPUnit_Framework_TestCase
 
     public function testCalculatesSizeAndReturnsNullForUnknown()
     {
-        $s = $this->getMockBuilder('GuzzleHttp\Stream\StreamInterface')
+        $s = $this->getMockBuilder('GuzzleHttp5\Stream\StreamInterface')
             ->setMethods(['getSize', 'isReadable'])
             ->getMockForAbstractClass();
         $s->expects($this->once())

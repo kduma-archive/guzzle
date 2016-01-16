@@ -1,18 +1,18 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace GuzzleHttp5\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\RequestEvents;
-use GuzzleHttp\Pool;
-use GuzzleHttp\Ring\Client\MockHandler;
-use GuzzleHttp\Ring\Future\FutureArray;
-use GuzzleHttp\Subscriber\History;
-use GuzzleHttp\Event\BeforeEvent;
-use GuzzleHttp\Event\CompleteEvent;
-use GuzzleHttp\Event\ErrorEvent;
-use GuzzleHttp\Event\EndEvent;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Subscriber\Mock;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Event\RequestEvents;
+use GuzzleHttp5\Pool;
+use GuzzleHttp5\Ring\Client\MockHandler;
+use GuzzleHttp5\Ring\Future\FutureArray;
+use GuzzleHttp5\Subscriber\History;
+use GuzzleHttp5\Event\BeforeEvent;
+use GuzzleHttp5\Event\CompleteEvent;
+use GuzzleHttp5\Event\ErrorEvent;
+use GuzzleHttp5\Event\EndEvent;
+use GuzzleHttp5\Message\Response;
+use GuzzleHttp5\Subscriber\Mock;
 use React\Promise\Deferred;
 
 class PoolTest extends \PHPUnit_Framework_TestCase
@@ -144,7 +144,7 @@ class PoolTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $c);
         $this->assertEquals(3, $d);
         $this->assertCount(3, $result);
-        $this->assertInstanceOf('GuzzleHttp\BatchResults', $result);
+        $this->assertInstanceOf('GuzzleHttp5\BatchResults', $result);
 
         // The first result is actually the second (redirect) response.
         $this->assertSame($responses[1], $result[0]);
@@ -202,7 +202,7 @@ class PoolTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $c);
         $this->assertEquals(3, $d);
         $this->assertCount(3, $result);
-        $this->assertInstanceOf('GuzzleHttp\BatchResults', $result);
+        $this->assertInstanceOf('GuzzleHttp5\BatchResults', $result);
 
         // The first result is actually the second (redirect) response.
         $this->assertSame($responses[1], $result[0]);
@@ -251,7 +251,7 @@ class PoolTest extends \PHPUnit_Framework_TestCase
                     $this->assertEquals(200, $result['response']->getStatusCode());
                 } else {
                     $this->assertInstanceOf(
-                        'GuzzleHttp\Exception\ClientException',
+                        'GuzzleHttp5\Exception\ClientException',
                         $result['error']
                     );
                 }
@@ -272,7 +272,7 @@ class PoolTest extends \PHPUnit_Framework_TestCase
         $requests = [$client->createRequest('GET', 'http://foo.com/baz')];
         $result = Pool::batch($client, $requests);
         $this->assertCount(1, $result);
-        $this->assertInstanceOf('GuzzleHttp\Exception\ClientException', $result[0]);
+        $this->assertInstanceOf('GuzzleHttp5\Exception\ClientException', $result[0]);
     }
 
     public function testHasSendMethod()

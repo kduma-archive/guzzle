@@ -1,13 +1,13 @@
 <?php
-namespace GuzzleHttp\Tests\Event;
+namespace GuzzleHttp5\Tests\Event;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Event\ProgressEvent;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Transaction;
+use GuzzleHttp5\Client;
+use GuzzleHttp5\Event\ProgressEvent;
+use GuzzleHttp5\Message\Request;
+use GuzzleHttp5\Transaction;
 
 /**
- * @covers GuzzleHttp\Event\ProgressEvent
+ * @covers GuzzleHttp5\Event\ProgressEvent
  */
 class ProgressEventTest extends \PHPUnit_Framework_TestCase
 {

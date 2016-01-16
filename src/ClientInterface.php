@@ -1,10 +1,10 @@
 <?php
 namespace GuzzleHttp;
 
-use GuzzleHttp\Event\HasEmitterInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
+use GuzzleHttp5\Event\HasEmitterInterface;
+use GuzzleHttp5\Exception\RequestException;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Message\ResponseInterface;
 
 /**
  * Client interface for sending HTTP requests
@@ -111,7 +111,7 @@ interface ClientInterface extends HasEmitterInterface
      *
      * @param RequestInterface $request Request to send
      *
-     * @return \GuzzleHttp\Message\ResponseInterface
+     * @return \GuzzleHttp5\Message\ResponseInterface
      * @throws \LogicException When the handler does not populate a response
      * @throws RequestException When an error is encountered
      */

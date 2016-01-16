@@ -1,9 +1,9 @@
 <?php
-namespace GuzzleHttp\Cookie;
+namespace GuzzleHttp5\Cookie;
 
-use GuzzleHttp\Message\RequestInterface;
-use GuzzleHttp\Message\ResponseInterface;
-use GuzzleHttp\ToArrayInterface;
+use GuzzleHttp5\Message\RequestInterface;
+use GuzzleHttp5\Message\ResponseInterface;
+use GuzzleHttp5\ToArrayInterface;
 
 /**
  * Cookie jar that stores cookies an an array
