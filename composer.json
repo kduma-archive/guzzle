@@ -25,12 +25,5 @@
         "psr-4": {
             "GuzzleHttp5\\": "src/"
         }
-    },
-    "provide": {
-        "guzzlehttp/ringphp": "*",
-        "guzzlehttp/streams": "*",
-        "guzzlehttp/cache-subscriber": "*",
-        "guzzlehttp/log-subscriber": "*",
-        "guzzlehttp/retry-subscriber": "*"
     }
 }
