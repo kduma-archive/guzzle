@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp;
+namespace GuzzleHttp5;
 
 use GuzzleHttp5\Event\BeforeEvent;
 use GuzzleHttp5\Event\RequestEvents;

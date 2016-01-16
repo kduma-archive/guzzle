@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp;
+namespace GuzzleHttp5;
 
 /**
  * Parses query strings into a Query object.

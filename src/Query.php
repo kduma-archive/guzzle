@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp;
+namespace GuzzleHttp5;
 
 /**
  * Manages query string variables and can aggregate them into a string

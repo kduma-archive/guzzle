@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp;
+namespace GuzzleHttp5;
 
 use GuzzleHttp5\Message\MessageFactoryInterface;
 use GuzzleHttp5\Message\RequestInterface;

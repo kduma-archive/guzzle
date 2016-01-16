@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp;
+namespace GuzzleHttp5;
 
 use GuzzleHttp5\Event\HasEmitterInterface;
 use GuzzleHttp5\Exception\RequestException;

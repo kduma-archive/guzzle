@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp;
+namespace GuzzleHttp5;
 
 /**
  * Trait implementing ToArrayInterface, \ArrayAccess, \Countable,

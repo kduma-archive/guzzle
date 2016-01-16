@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp;
+namespace GuzzleHttp5;
 
 use GuzzleHttp5\Ring\Client\CurlHandler;
 use GuzzleHttp5\Ring\Client\CurlMultiHandler;
